@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>바라봄 셀프사진관 | Private Self-Photo Studio</title>
+  <!-- 파비콘 추가 -->
+	<link rel="icon" type="image/jpeg"
+	  href="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA1MjBfMTM4%2FMDAxNzQ3NzE0OTI5NDA1.54gsoSj0OEwzXaf3Hr87UwjWW5_SA_-UzW4sutPf0usg.rahqpPL-eJP_h6yjUKH_jzB6yO3jRFyKxKNztOIG6hYg.JPEG%2FKakaoTalk_20250520_124535073_08.jpg" />
+  <meta name="description" content="프라이빗한 공간에서 더 고급스럽게, 바라봄 셀프사진관. 합리적인 가격의 셀프/커플/우정/프로필 촬영." />
+  <meta name="format-detection" content="telephone=no" />
+  <meta property="og:title" content="바라봄 셀프사진관" />
+  <meta property="og:description" content="프라이빗·세련된 무드의 셀프 스튜디오" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --panel:#0f131b;
+      --text:#eef1f6;
+      --muted:#9aa3b2;
+      --line:rgba(255,255,255,.10);
+      --line-soft:rgba(255,255,255,.06);
+      --gold:#e7c98a;
+      --radius:18px;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);
+      font-family:"Pretendard","Noto Sans KR",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:radial-gradient(900px 500px at 10% -10%, rgba(231,201,138,.10), transparent 60%), var(--bg);
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+
+    /* Header */
+    .hdr{position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line-soft);
+      background:linear-gradient(180deg, rgba(15,19,27,.85), rgba(15,19,27,.55) 70%, rgba(15,19,27,0));
+      backdrop-filter:saturate(140%) blur(10px);
+    }
+    .container{width:min(1100px, 92vw);margin:0 auto}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px}
+
+	/* 로고 마크 (이미지로 교체) */
+	.mark{
+	  width:28px;height:28px;
+	  border-radius:8px;
+	  border:1px solid var(--line-soft);
+	  object-fit:cover;
+	  display:block;
+	}
+
+    .brand h1{margin:0;font-size:1.05rem;letter-spacing:.18em;font-weight:900}
+    .brand small{display:block;color:var(--muted);letter-spacing:.2em;margin-top:2px}
+    .nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    .nav a{padding:8px 12px;border-radius:999px;border:1px solid transparent}
+    .nav a:hover{border-color:var(--line-soft);background:rgba(255,255,255,.03)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:11px 16px;border-radius:999px;font-weight:800}
+    .btn-ghost{border:1px solid var(--line-soft);color:var(--text);background:transparent}
+    .btn-primary{color:#191919;background:linear-gradient(180deg,var(--gold),#c9aa6b);border:0}
+    .menu-toggle{display:none}
+    @media (max-width: 860px){
+      .nav ul{display:none}
+      .menu-toggle{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line-soft);padding:8px 12px;border-radius:12px;color:var(--muted)}
+      .menu-open .nav ul{display:flex;position:absolute;left:4vw;right:4vw;top:66px;flex-direction:column;background:var(--panel);border:1px solid var(--line-soft);border-radius:16px;padding:10px}
+      .menu-open .nav a{width:100%}
+    }
+
+    /* Hero */
+    .hero{padding:96px 0 48px}
+    .grid-hero{display:grid;grid-template-columns: 1.2fr 1fr;gap:36px;align-items:center}
+    .kicker{display:inline-block;font-weight:700;color:#aecdff;letter-spacing:.18em;font-size:.9rem;margin-bottom:8px}
+    .headline{font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.15;margin:0 0 12px;font-weight:900}
+    .sub{color:var(--muted);margin:0 0 20px}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+    .hero-media{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+    .hero-media img{aspect-ratio: 4/3;object-fit:cover}
+    .gloss{position:absolute;inset:auto 0 0 0;height:44%;background:linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,0));}
+    .tag{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);padding:5px 9px;border-radius:10px;border:1px solid var(--line-soft);font-weight:800;letter-spacing:.14em}
+    @media (max-width: 980px){.grid-hero{grid-template-columns:1fr}}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-title{font-size:1.6rem;margin:0 0 8px}
+    .section-sub{margin:0 0 24px;color:var(--muted)}
+
+    /* === 섹션 구분용 골드 라인 + 은은한 조명 애니메이션 === */
+    @keyframes sweepGlow {
+      0%   { background-position: 0% 50%; opacity: .45; }
+      50%  { background-position: 100% 50%; opacity: .85; }
+      100% { background-position: 0% 50%; opacity: .45; }
+    }
+    /* 모션 최소화 환경에선 애니메이션 해제 */
+    @media (prefers-reduced-motion: reduce){
+      #gallery::before, #pricing::before, #guide::before, #faq::before {
+        animation: none !important;
+        opacity: .5;
+      }
+    }
+    /* 공통 라인 그래픽 */
+    #gallery, #pricing, #guide, #faq { position: relative; }
+    #gallery::before, #pricing::before, #guide::before, #faq::before{
+      content:'';
+      position:absolute; top:0; left:50%;
+      transform:translateX(-50%);
+      width:80%; height:2px;
+      background:
+        linear-gradient(90deg,
+          rgba(255,255,255,0) 0%,
+          rgba(231,201,138,0.0) 10%,
+          rgba(231,201,138,0.7) 50%,
+          rgba(231,201,138,0.0) 90%,
+          rgba(255,255,255,0) 100%);
+      background-size:200% 100%;
+      animation:sweepGlow 8s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    /* Gallery Grid (원본 스타일) */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .tile{grid-column:span 4;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+    .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+    .tile.t2{grid-column:span 8}
+    .tile.t3 img{aspect-ratio: 3/4}
+    @media (max-width: 920px){.tile{grid-column:span 6}.tile.t2{grid-column:span 12}}
+    @media (max-width: 560px){.tile{grid-column:span 12}}
+
+    /* === 가격표 섹션 리디자인 === */
+    #pricing {
+      padding:100px 0;
+      background: radial-gradient(1000px 600px at 50% 0%, rgba(231,201,138,0.08), rgba(10,12,18,1) 80%);
+    }
+    #pricing .section-title {
+      font-size: 1.9rem;
+      font-weight: 900;
+      text-align: center;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    #pricing .section-sub {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #b9c0ce;
+      margin-bottom: 40px;
+    }
+    .pricing-wrap {
+      border: none;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      padding: 10px 0;
+    }
+    .plan {
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transition: all 0.35s ease;
+    }
+    .plan:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .plan .name b { font-size: 1.1rem; color: #fff; }
+    .plan .inc { color: #cfcfcf; font-size: .9rem; }
+    .plan .price {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      margin: 12px 0 16px;
+    }
+
+    /* ==== ULTRA CLEAN OPTIONS (원본 유지 + 경량 보정) ==== */
+    .options{border-top:1px solid var(--line-soft);margin-top:6px}
+    .opt-wrap{padding:6px 18px 18px}
+    .opt-title{margin:0 0 8px;font-weight:800}
+    .opt-list{border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;background:transparent}
+    .opt-row{
+      display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+      padding:14px 16px;border-top:1px solid var(--line-soft)
+    }
+    .opt-row:first-child{border-top:none}
+    .opt-left{display:flex;flex-direction:column;gap:2px}
+    .opt-label{font-weight:700}
+    .opt-desc{color:var(--muted);font-size:.95rem}
+    .opt-price{font-weight:900;font-size:1.1rem}
+    .opt-note{margin:10px 2px 0;color:var(--muted);font-size:.95rem}
+
+    /* ===== GUIDE ===== */
+    .guide-wrap{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
+    .guide-head{padding:20px;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;gap:12px;align-items:end}
+    .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px}
+    @media (max-width:900px){.guide-grid{grid-template-columns:1fr}}
+    .step{border:1px solid var(--line-soft);border-radius:14px;padding:16px}
+    .step h4{margin:0 0 6px}
+    .fine{color:var(--muted);margin:0}
+    .guide-list{padding:0 18px 18px}
+    .guide-list ul{margin:8px 0 0 1em}
+    .guide-foot{border-top:1px solid var(--line-soft);padding:14px 18px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Location/FAQ/Footer */
+    .faq{display:grid;gap:10px}
+    details{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:12px;padding:14px}
+    summary{font-weight:800;cursor:pointer}
+    .location{display:grid;grid-template-columns: 1.2fr .8fr;gap:14px;align-items:start}
+    .mapbox{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01))}
+    .mapbox .placeholder{display:grid;place-items:center;aspect-ratio: 16/10;color:var(--muted)}
+    .info{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:12px;padding:16px}
+    .info dl{display:grid;grid-template-columns: 90px 1fr;gap:8px 12px;margin:0}
+    .info dt{color:var(--muted)}
+    .info dd{margin:0}
+    @media (max-width: 920px){.location{grid-template-columns:1fr}}
+    footer{padding:36px 0;color:#c8cfda80;border-top:1px solid var(--line-soft)}
+    .footer{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+    .sns{display:flex;gap:8px}
+    .sns a{border:1px solid var(--line-soft);padding:7px 9px;border-radius:10px}
+    .float-cta{position:fixed;right:14px;bottom:14px;z-index:80}
+    @media (min-width:861px){.float-cta{display:none)}
+
+	/* === Mosaic Slider === */
+	.mosaic-slider{position:relative;border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
+	.mosaic-track{display:flex;transition:transform 3s cubic-bezier(.2,.6,.2,1);will-change:transform}
+	.mosaic{min-width:100%;padding:10px}
+
+	/* 기존 갤러리 그리드 재사용 (슬라이드 내부) */
+	.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+	.gallery-grid .tile{grid-column:span 4;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+	.gallery-grid .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+	.gallery-grid .tile.t2{grid-column:span 8}
+	.gallery-grid .tile.t3 img{aspect-ratio:3/4}
+	@media (max-width:920px){.gallery-grid .tile{grid-column:span 6}.gallery-grid .tile.t2{grid-column:span 12}}
+	@media (max-width:560px){.gallery-grid .tile{grid-column:span 12}}
+
+	/* Nav buttons */
+	.mosaic-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:1px solid var(--line-soft);background:rgba(0,0,0,.35);backdrop-filter:blur(6px);color:#fff;padding:10px 12px;border-radius:12px;cursor:pointer}
+	.mosaic-nav:hover{background:rgba(0,0,0,.5)}
+	.mosaic-prev{left:10px}
+	.mosaic-next{right:10px}
+
+	/* Dots */
+	.mosaic-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px;z-index:4}
+	.mosaic-dot{width:8px;height:8px;border-radius:999px;border:1px solid var(--line-soft);background:#ffffff22}
+	.mosaic-dot.is-active{background:#ffffffbb}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="hdr" aria-label="주요 메뉴">
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="바라봄 홈으로">
+		<img
+		  class="mark"
+		  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA1MjBfMTM4%2FMDAxNzQ3NzE0OTI5NDA1.54gsoSj0OEwzXaf3Hr87UwjWW5_SA_-UzW4sutPf0usg.rahqpPL-eJP_h6yjUKH_jzB6yO3jRFyKxKNztOIG6hYg.JPEG%2FKakaoTalk_20250520_124535073_08.jpg"
+		  alt="BARABOM"
+		  loading="lazy"
+		  decoding="async"
+		/>
+        <div>
+          <h1>BARABOM</h1>
+          <small>셀프사진관</small>
+        </div>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="모바일 메뉴">메뉴</button>
+      <ul id="primaryNav" role="menubar">
+        <li role="none"><a role="menuitem" href="#home">메인</a></li>
+        <li role="none"><a role="menuitem" href="#pricing">가격표</a></li>
+        <li role="none"><a role="menuitem" href="#guide">안내사항</a></li>
+        <li role="none"><a role="menuitem" href="#faq">Q&A</a></li>
+        <li role="none"><a role="menuitem" href="#location">위치</a></li>
+        <li role="none"><a role="menuitem" class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약하기</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container grid-hero">
+      <div>
+        <span class="kicker">PRIVATE · ELEGANT · TIMELESS</span>
+		<h2 class="headline">빛이 머무는 공간<br>나를 가장 예쁘게, <em style="font-style:normal;color:var(--gold)">바라봄</em><h2>
+        <p class="sub" style="font-size:large;">프라이빗 룸, 가족/커플/우정/프로필 촬영을 품격 있게 완성하세요.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">네이버 예약하기</a>
+          <a class="btn btn-ghost" href="#gallery">스튜디오 미리보기</a>
+        </div>
+      </div>
+      <div class="hero-media" aria-hidden="true">
+        <picture>
+          <img loading="lazy" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20250930_86%2F1759220828991oQxPA_PNG%2F1000037771.png" alt="무드 있는 스튜디오 조명과 배경"/>
+        </picture>
+        <span class="gloss"></span>
+        <span class="tag">Barabom Bear</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Gallery -->
+  <section id="gallery" aria-label="스튜디오 샘플">
+    <div class="container">
+      <h3 class="section-title">빛으로 담아낸 순간들</h3>
+      <p class="section-sub">빛이 닿는 곳마다, 우리의 분위기로 채워지길</p>
+
+      <div class="mosaic-slider" id="mosaicSlider" aria-label="스튜디오 샘플 슬라이더">
+		  <div class="mosaic-track">
+			<!-- Slide 1 : 기존 모자이크 그대로 -->
+			<div class="mosaic" aria-roledescription="slide">
+			  <div class="gallery-grid">
+				<figure class="tile t2"><img loading="lazy" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20250919_76%2F1758269456652p6fxn_JPEG%2F1000037192.jpg" alt="블랙 배경의 감성 포트레이트"></figure>
+				<figure class="tile"><img loading="lazy" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230718_46%2F16896576806077WUJo_JPEG%2F1687411716251-4.jpg" alt="밝은 톤 배경과 소프트박스 조명"></figure>
+				<figure class="tile t3"><img loading="lazy" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230718_251%2F168965768033711upf_JPEG%2F1688628340659-3.jpg" alt="클린 화이트 배경의 하프바스트"></figure>
+				<figure class="tile"><img loading="lazy" src="http://blogfiles.naver.net/MjAyMzA4MjNfMjI0/MDAxNjkyNzQ3NjQ0NTk0.yEgarZFz6xAO1lzo3lVRvqKQ01GSokDmTXQwF2Si8MYg.hUO_QduxxWyiJxEdsvFMcsNlS2DOnsivsiF1h2Od5eIg.JPEG.yj_diary/output_2784128033.jpg" alt="필름 감성 흑백 컷"></figure>
+				<figure class="tile t2"><img loading="lazy" src="http://blogfiles.naver.net/MjAyNTA1MjBfMTM4/MDAxNzQ3NzE0OTI5NDA1.54gsoSj0OEwzXaf3Hr87UwjWW5_SA_-UzW4sutPf0usg.rahqpPL-eJP_h6yjUKH_jzB6yO3jRFyKxKNztOIG6hYg.JPEG/KakaoTalk_20250520_124535073_08.jpg" alt="컬러 배경지와 포즈"></figure>
+				<figure class="tile"><img loading="lazy" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240224_297%2F1708706834557FhfKA_JPEG%2F1688048994353-2.jpg" alt="따뜻한 톤의 무드 라이팅"></figure>
+			  </div>
+			</div>
+
+			<!-- Slide 2 : 다른 사진 세트 (원하는 이미지로 바꿔 넣기) -->
+			<div class="mosaic" aria-roledescription="slide">
+			  <div class="gallery-grid">
+				<figure class="tile t2"><img loading="lazy" src="https://picsum.photos/1200/700?1" alt="샘플 1"></figure>
+				<figure class="tile"><img loading="lazy" src="https://picsum.photos/700/700?2" alt="샘플 2"></figure>
+				<figure class="tile t3"><img loading="lazy" src="https://picsum.photos/700/900?3" alt="샘플 3"></figure>
+				<figure class="tile"><img loading="lazy" src="https://picsum.photos/700/700?4" alt="샘플 4"></figure>
+				<figure class="tile t2"><img loading="lazy" src="https://picsum.photos/1200/700?5" alt="샘플 5"></figure>
+				<figure class="tile"><img loading="lazy" src="https://picsum.photos/700/700?6" alt="샘플 6"></figure>
+			  </div>
+			</div>
+
+			<!-- Slide 3 : 필요 시 추가 -->
+			<div class="mosaic" aria-roledescription="slide">
+			  <div class="gallery-grid">
+				<!-- 동일한 패턴으로 이미지 6장 배치 -->
+				<figure class="tile t2"><img loading="lazy" src="https://picsum.photos/1200/700?7" alt="샘플 7"></figure>
+				<figure class="tile"><img loading="lazy" src="https://picsum.photos/700/700?8" alt="샘플 8"></figure>
+				<figure class="tile t3"><img loading="lazy" src="https://picsum.photos/700/900?9" alt="샘플 9"></figure>
+				<figure class="tile"><img loading="lazy" src="https://picsum.photos/700/700?10" alt="샘플 10"></figure>
+				<figure class="tile t2"><img loading="lazy" src="https://picsum.photos/1200/700?11" alt="샘플 11"></figure>
+				<figure class="tile"><img loading="lazy" src="https://picsum.photos/700/700?12" alt="샘플 12"></figure>
+			  </div>
+			</div>
+		  </div>
+
+		  <!-- Controls -->
+		  <button class="mosaic-nav mosaic-prev" aria-label="이전 슬라이드">‹</button>
+		  <button class="mosaic-nav mosaic-next" aria-label="다음 슬라이드">›</button>
+		  <div class="mosaic-dots" aria-label="슬라이드 인디케이터"></div>
+		</div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section id="pricing" aria-label="가격표">
+    <div class="container">
+      <div class="pricing-wrap">
+        <div class="pricing-head">
+          <h3 class="section-title">가격표</h3>
+          <p class="section-sub">모든 촬영은 프라이빗 룸에서 진행됩니다.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="plan" aria-label="1인 요금">
+            <div class="name"><b>혼자 (1인)</b><span class="inc">인화 2장 포함</span></div>
+            <div class="price">₩20,000</div>
+            <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약하기</a>
+          </article>
+
+          <article class="plan" aria-label="2~4인 요금">
+            <div class="name"><b>같이 (2~4인)</b><span class="inc">인화 4장 포함</span></div>
+            <div class="price">₩30,000</div>
+            <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약하기</a>
+          </article>
+        </div>
+
+        <!-- Options -->
+        <div class="options">
+          <div class="opt-wrap">
+            <h4 class="opt-title">추가 옵션</h4>
+            <div class="opt-list" role="list">
+              <div class="opt-row" role="listitem">
+                <div class="opt-left">
+                  <span class="opt-label">인원 1인 추가</span>
+                  <span class="opt-desc">인화도 함께 추가</span>
+                </div>
+                <div class="opt-price">₩10,000</div>
+              </div>
+              <div class="opt-row" role="listitem">
+                <div class="opt-left">
+                  <span class="opt-label">인화 1장 추가</span>
+                  <span class="opt-desc">동일 컷 또는 다른 컷 선택</span>
+                </div>
+                <div class="opt-price">₩5,000</div>
+              </div>
+              <div class="opt-row" role="listitem">
+                <div class="opt-left">
+                  <span class="opt-label">원본파일</span>
+                  <span class="opt-desc">당일 즉시 제공</span>
+                </div>
+                <div class="opt-price">무료</div>
+              </div>
+            </div>
+            <p class="opt-note">* 영유아 및 반려동물도 인원수에 포함됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GUIDE ===== -->
+  <section id="guide" aria-label="안내사항">
+    <div class="container">
+      <div class="guide-wrap">
+        <div class="guide-head">
+          <div>
+            <h3 class="section-title" style="margin:0">안내사항</h3>
+            <p class="section-sub" style="margin:6px 0 0">예약부터 촬영·인화까지의 기본 안내입니다.</p>
+          </div>
+          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">지금 예약</a>
+        </div>
+
+        <div class="guide-grid" role="list">
+          <article class="step" role="listitem">
+            <h4>100% 무인 예약제</h4>
+            <p class="fine">원하는 시간으로 예약 후 비대면 입실로 이용합니다.</p>
+          </article>
+          <article class="step" role="listitem">
+            <h4>이용시간 60분</h4>
+            <p class="fine">입실·준비·촬영·인화 선택까지 여유 있게 진행.</p>
+          </article>
+          <article class="step" role="listitem">
+            <h4>흑백 + 컬러 자유 촬영</h4>
+            <p class="fine">컷마다 컬러/흑백 변경 가능.</p>
+          </article>
+        </div>
+
+        <div class="guide-list">
+          <ul>
+            <li>원본파일 ‘당일즉시’ 무료 제공</li>
+            <li>인화지, 종이액자 ‘당일즉시’ 기본 제공 (1인 2장, 2~4인 4장, 5인 5장, 6인 6장)</li>
+          </ul>
+        </div>
+
+        <div class="guide-foot">
+          촬영 중 직원 호출벨 이용 가능 · 소품/의상 반입 가능 · 영유아/반려동물 동반 가능
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-label="자주 묻는 질문">
+    <div class="container">
+      <h3 class="section-title">Q&A</h3>
+      <div class="faq">
+        <details>
+          <summary>촬영은 어떻게 진행되나요?</summary>
+          <p>입실 후 간단 안내 후 셀프 타이머 또는 라이브 뷰로 진행합니다. 직원 호출 벨을 통해 도움을 받으실 수 있어요.</p>
+        </details>
+        <details>
+          <summary>의상/소품 지참이 가능한가요?</summary>
+          <p>가능합니다. 간단 소품은 무료 대여, 외부 소품 지참도 환영합니다.</p>
+        </details>
+        <details>
+          <summary>보정은 얼마나 소요되나요?</summary>
+          <p>원본은 당일 전달, 보정 컷은 영업일 기준 2–3일 내 이메일 발송해 드립니다.</p>
+        </details>
+        <details>
+          <summary>주차는 가능한가요?</summary>
+          <p>인근 유료 주차장 이용이 가능합니다. 위치는 아래 지도와 네이버 지도를 참고해 주세요.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location" aria-label="위치">
+    <div class="container location">
+      <div class="mapbox">
+        <div class="placeholder">
+          <p>지도 미리보기 영역입니다.<br>아래 버튼으로 네이버 지도를 여세요.</p>
+        </div>
+      </div>
+      <aside class="info">
+        <h3 style="margin:0 0 10px">오시는 길</h3>
+        <dl>
+          <dt>주소</dt><dd>안양시 동안구 시민대로 187 안양건설타워 613호 (바라봄 스튜디오)</dd>
+          <dt>영업시간</dt><dd>매일 11:00 – 21:00 (연중무휴)</dd>
+          <dt>연락처</dt><dd>010-0000-0000 · hello@barabom.studio</dd>
+          <dt>주차</dt><dd>최초 1시간 2,000원<br/>추가 요금 30분당 1,000원<br/>주말 동안구청 주차장 무료이용</dd>
+        </dl>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">네이버지도에서 보기 · 예약</a>
+          <a class="btn btn-ghost" href="#home">맨 위로</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer">
+      <div>© <span id="year"></span> 바라봄 셀프사진관 · All rights reserved.</div>
+      <div class="sns">
+        <a href="https://www.instagram.com/barabom.studio/" target="_blank" aria-label="인스타그램">Instagram</a>
+        <a href="https://blog.naver.com/barabom-studio" target="_blank" aria-label="블로그">블로그</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating CTA for mobile -->
+  <div class="float-cta">
+    <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener" aria-label="바로 예약">예약하기</a>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const body = document.body;
+    const toggle = document.getElementById('menuToggle');
+    toggle?.addEventListener('click', () => {
+      body.classList.toggle('menu-open');
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+    });
+    document.getElementById('primaryNav')?.addEventListener('click', (e) => {
+      if(e.target.tagName === 'A' && body.classList.contains('menu-open')){
+        body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+  (function(){
+    const root = document.getElementById('mosaicSlider');
+    if(!root) return;
+    const track = root.querySelector('.mosaic-track');
+    const slides = Array.from(root.querySelectorAll('.mosaic'));
+    const prev = root.querySelector('.mosaic-prev');
+    const next = root.querySelector('.mosaic-next');
+    const dotsWrap = root.querySelector('.mosaic-dots');
+
+    let index = 0;
+    let isDragging = false, startX = 0, currentX = 0, delta = 0;
+    let autoplayId = null;
+
+    // dots
+    slides.forEach((_, i)=>{
+      const d = document.createElement('button');
+      d.className = 'mosaic-dot' + (i===0?' is-active':'');
+      d.setAttribute('aria-label', (i+1)+'번째 슬라이드로 이동');
+      d.addEventListener('click', ()=>go(i));
+      dotsWrap.appendChild(d);
+    });
+
+    function update(){
+      track.style.transform = `translateX(-${index*100}%)`;
+      dotsWrap.querySelectorAll('.mosaic-dot').forEach((el,i)=>{
+        el.classList.toggle('is-active', i===index);
+      });
+    }
+    function go(i){
+      index = (i+slides.length)%slides.length;
+      update();
+      restartAutoplay();
+    }
+    prev.addEventListener('click', ()=>go(index-1));
+    next.addEventListener('click', ()=>go(index+1));
+
+    // touch drag (모바일 스와이프)
+    track.addEventListener('pointerdown', (e)=>{
+      isDragging = true; startX = e.clientX; delta = 0;
+      track.style.transition = 'none';
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', (e)=>{
+      if(!isDragging) return;
+      currentX = e.clientX;
+      delta = currentX - startX;
+      track.style.transform = `translateX(calc(-${index*100}% + ${delta}px))`;
+    });
+    track.addEventListener('pointerup', ()=>{
+      if(!isDragging) return;
+      isDragging = false; track.style.transition = '';
+      const threshold = root.clientWidth * 0.15;
+      if(delta > threshold) go(index-1);
+      else if(delta < -threshold) go(index+1);
+      else update();
+    });
+
+    // 반응형 리사이즈 후 위치 보정
+    window.addEventListener('resize', update);
+
+    // 자동 넘김: 5초
+    function startAutoplay(){ autoplayId = setInterval(()=>go(index+1), 5000); }
+    function stopAutoplay(){ clearInterval(autoplayId); }
+    function restartAutoplay(){ stopAutoplay(); startAutoplay(); }
+    root.addEventListener('mouseenter', stopAutoplay);
+    root.addEventListener('mouseleave', startAutoplay);
+
+    update();
+    startAutoplay();
+  })();
+  </script>
+</body>
+</html>
