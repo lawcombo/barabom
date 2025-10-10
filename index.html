@@ -4,9 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>바라봄 셀프사진관 | Private Self-Photo Studio</title>
-  <!-- 파비콘 추가 -->
-	<link rel="icon" type="image/jpeg"
-	  href="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA1MjBfMTM4%2FMDAxNzQ3NzE0OTI5NDA1.54gsoSj0OEwzXaf3Hr87UwjWW5_SA_-UzW4sutPf0usg.rahqpPL-eJP_h6yjUKH_jzB6yO3jRFyKxKNztOIG6hYg.JPEG%2FKakaoTalk_20250520_124535073_08.jpg" />
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jfif" />
   <meta name="description" content="프라이빗한 공간에서 더 고급스럽게, 바라봄 셀프사진관. 합리적인 가격의 셀프/커플/우정/프로필 촬영." />
   <meta name="format-detection" content="telephone=no" />
   <meta property="og:title" content="바라봄 셀프사진관" />
@@ -16,56 +15,78 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Remix Icon (아이콘) -->
+  <!-- 
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- Font Awesome 6 Free (아이콘 폰트) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+
+
+
   <style>
     :root{
-      --bg:#0b0d12;
-      --panel:#0f131b;
-      --text:#eef1f6;
-      --muted:#9aa3b2;
-      --line:rgba(255,255,255,.10);
-      --line-soft:rgba(255,255,255,.06);
-      --gold:#e7c98a;
+      /* 화이트 톤 */
+      --bg:#f7f8fb;
+      --panel:#ffffff;
+      --text:#1d232a;
+      --muted:#667085;
+      --line:rgba(0,0,0,.10);
+      --line-soft:rgba(0,0,0,.06);
+      --gold:#d6b257;       /* 밝은 골드 */
+      --gold-deep:#b89339;  /* 그라데이션 하단 */
       --radius:18px;
-      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --shadow:0 18px 50px rgba(0,0,0,.10);
+      --hdrH: 66px;
     }
+    main[id], section[id], [id]:target { scroll-margin-top: calc(var(--hdrH) + 8px); }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;color:var(--text);
       font-family:"Pretendard","Noto Sans KR",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:radial-gradient(900px 500px at 10% -10%, rgba(231,201,138,.10), transparent 60%), var(--bg);
+      background:radial-gradient(900px 500px at 10% -10%, rgba(214,178,87,.08), transparent 60%), var(--bg);
       line-height:1.7;
       -webkit-tap-highlight-color: transparent;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block;height:auto;user-select:none;-webkit-user-drag:none}
 
+    /* 공통 섹션을 화이트로 통일 */
+    header, section, footer{background:var(--panel)}
+    section{padding:64px 0}
+
     /* Header */
     .hdr{position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line-soft);
-      background:linear-gradient(180deg, rgba(15,19,27,.85), rgba(15,19,27,.55) 70%, rgba(15,19,27,0));
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7) 70%, rgba(255,255,255,0));
       backdrop-filter:saturate(140%) blur(10px);
     }
     .container{width:min(1100px, 92vw);margin:0 auto}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;align-items:center;gap:10px}
 
-	/* 로고 마크 (이미지로 교체) */
-	.mark{
-	  width:28px;height:28px;
-	  border-radius:8px;
-	  border:1px solid var(--line-soft);
-	  object-fit:cover;
-	  display:block;
-	}
-
-    .brand h1{margin:0;font-size:1.05rem;letter-spacing:.18em;font-weight:900}
+    /* 로고 마크: 테두리/광택 미세조정 */
+    .mark{
+      width:28px;height:28px;border-radius:8px;
+      border:1px solid var(--line-soft);
+      box-shadow:0 2px 8px rgba(0,0,0,.06);
+      object-fit:cover;display:block;background:#fff;
+    }
+    .brand h1{margin:0;font-size:1.05rem;letter-spacing:.18em;font-weight:900;color:#111}
     .brand small{display:block;color:var(--muted);letter-spacing:.2em;margin-top:2px}
+
     .nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
     .nav a{padding:8px 12px;border-radius:999px;border:1px solid transparent}
-    .nav a:hover{border-color:var(--line-soft);background:rgba(255,255,255,.03)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:11px 16px;border-radius:999px;font-weight:800}
+    .nav a:hover{border-color:var(--line-soft);background:rgba(0,0,0,.04)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:11px 16px;border-radius:999px;font-weight:800;transition:.2s ease}
     .btn-ghost{border:1px solid var(--line-soft);color:var(--text);background:transparent}
-    .btn-primary{color:#191919;background:linear-gradient(180deg,var(--gold),#c9aa6b);border:0}
+    .btn-ghost:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
+    .btn-primary{
+      color:#191919;background:linear-gradient(180deg,var(--gold),var(--gold-deep));border:0;
+      box-shadow:0 8px 22px rgba(184,147,57,.25)
+    }
+    .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
     .menu-toggle{display:none}
     @media (max-width: 860px){
       .nav ul{display:none}
@@ -77,126 +98,72 @@
     /* Hero */
     .hero{padding:50px 0 48px}
     .grid-hero{display:grid;grid-template-columns: 1.2fr 1fr;gap:36px;align-items:center}
-    .kicker{display:inline-block;font-weight:700;color:#aecdff;letter-spacing:.18em;font-size:.9rem;margin-bottom:8px}
+    .kicker{display:inline-block;font-weight:700;color:#5d7db5;letter-spacing:.18em;font-size:.9rem;margin-bottom:8px}
     .headline{font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.15;margin:0 0 12px;font-weight:900}
     .sub{color:var(--muted);margin:0 0 20px}
     .hero-cta{display:flex;gap:10px;flex-wrap:wrap}
-    .hero-media{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+    .hero-media{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow);background:var(--panel)}
     .hero-media img{aspect-ratio: 4/3;object-fit:cover}
-    .gloss{position:absolute;inset:auto 0 0 0;height:44%;background:linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,0));}
-    .tag{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.42);backdrop-filter:blur(4px);padding:5px 9px;border-radius:10px;border:1px solid var(--line-soft);font-weight:800;letter-spacing:.14em}
+    .gloss{position:absolute;inset:auto 0 0 0;height:44%;background:linear-gradient(0deg, rgba(0,0,0,.18), rgba(0,0,0,0));}
+    .tag{position:absolute;left:12px;bottom:10px;background:rgba(255,255,255,.8);backdrop-filter:blur(4px);padding:5px 9px;border-radius:10px;border:1px solid var(--line-soft);font-weight:800;letter-spacing:.14em}
     @media (max-width: 980px){.grid-hero{grid-template-columns:1fr}}
 
-    /* Sections */
-    section{padding:64px 0}
     .section-title{font-size:1.6rem;margin:0 0 8px}
     .section-sub{margin:0 0 24px;color:var(--muted)}
 
-    /* === 섹션 구분용 골드 라인 + 은은한 조명 애니메이션 === */
-    @keyframes sweepGlow {
-      0%   { background-position: 0% 50%; opacity: .45; }
-      50%  { background-position: 100% 50%; opacity: .85; }
-      100% { background-position: 0% 50%; opacity: .45; }
-    }
-    /* 모션 최소화 환경에선 애니메이션 해제 */
+    /* 골드 라인 애니메이션 */
+    @keyframes sweepGlow { 0%{background-position:0% 50%;opacity:.45} 50%{background-position:100% 50%;opacity:.85} 100%{background-position:0% 50%;opacity:.45} }
     @media (prefers-reduced-motion: reduce){
-      #gallery::before, #pricing::before, #guide::before, #faq::before {
-        animation: none !important;
-        opacity: .5;
-      }
+      #gallery::before, #pricing::before, #guide::before, #faq::before, #amenities::before, #location::before { animation: none !important; opacity: .5; }
     }
-    /* 공통 라인 그래픽 */
-    #gallery, #pricing, #guide, #faq { position: relative; }
-    #gallery::before, #pricing::before, #guide::before, #faq::before{
-      content:'';
-      position:absolute; top:0; left:50%;
-      transform:translateX(-50%);
-      width:80%; height:2px;
-      background:
-        linear-gradient(90deg,
-          rgba(255,255,255,0) 0%,
-          rgba(231,201,138,0.0) 10%,
-          rgba(231,201,138,0.7) 50%,
-          rgba(231,201,138,0.0) 90%,
-          rgba(255,255,255,0) 100%);
-      background-size:200% 100%;
-      animation:sweepGlow 8s ease-in-out infinite;
-      pointer-events:none;
+    #gallery, #pricing, #guide, #faq, #amenities, #location { position: relative; }
+    #gallery::before, #pricing::before, #guide::before, #faq::before, #amenities::before, #location::before{
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:80%; height:2px;
+      background:linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(214,178,87,0.0) 10%, rgba(214,178,87,0.7) 50%, rgba(214,178,87,0.0) 90%, rgba(0,0,0,0) 100%);
+      background-size:200% 100%; animation:sweepGlow 8s ease-in-out infinite; pointer-events:none;
     }
 
-    /* Gallery Grid (원본 스타일) */
+    /* Gallery (이미지 섹션=화이트 유지) */
     .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    .tile{grid-column:span 4;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+    .tile{grid-column:span 4;background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
     .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
     .tile.t2{grid-column:span 8}
     .tile.t3 img{aspect-ratio: 3/4}
     @media (max-width: 920px){.tile{grid-column:span 6}.tile.t2{grid-column:span 12}}
     @media (max-width: 560px){.tile{grid-column:span 12}}
 
-    /* === 가격표 섹션 리디자인 === */
-    #pricing {
-      padding:100px 0;
-      background: radial-gradient(1000px 600px at 50% 0%, rgba(231,201,138,0.08), rgba(10,12,18,1) 80%);
-    }
-    #pricing .section-title {
-      font-size: 1.9rem;
-      font-weight: 900;
-      text-align: center;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-    #pricing .section-sub {
-      text-align: center;
-      font-size: 1.05rem;
-      color: #b9c0ce;
-      margin-bottom: 40px;
-    }
+    /* 가격표(화이트 유지) */
+    #pricing{background:var(--panel)}
     .pricing-wrap {
-      border: none;
+      border: 1px solid var(--line-soft);
       border-radius: 24px;
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(8px);
+      background: #fff;
+      backdrop-filter: blur(4px);
       padding: 40px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      box-shadow: var(--shadow);
     }
     .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      padding: 10px 0;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; padding: 10px 0;
     }
     .plan {
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 18px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-      transition: all 0.35s ease;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 18px; padding: 24px; text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: all .25s ease;
     }
-    .plan:hover {
-      transform: translateY(-6px);
-      background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-    }
-    .plan .name b { font-size: 1.1rem; color: #fff; }
-    .plan .inc { color: #cfcfcf; font-size: .9rem; }
-    .plan .price {
-      font-size: 2.4rem;
-      font-weight: 900;
-      color: var(--gold);
-      margin: 12px 0 16px;
-    }
+    .plan:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+    .plan .name b { font-size: 1.1rem; color: #111; }
+    .plan .inc { color: #6b7584; font-size: .9rem; }
+    .plan .price { font-size: 2.4rem; font-weight: 900; color: var(--gold); margin: 12px 0 16px; }
 
-    /* ==== ULTRA CLEAN OPTIONS (원본 유지 + 경량 보정) ==== */
+    /* 옵션 */
     .options{border-top:1px solid var(--line-soft);margin-top:6px}
     .opt-wrap{padding:6px 18px 18px}
     .opt-title{margin:0 0 8px;font-weight:800}
     .opt-list{border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;background:transparent}
-    .opt-row{
-      display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
-      padding:14px 16px;border-top:1px solid var(--line-soft)
-    }
+    .opt-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:14px 16px;border-top:1px solid var(--line-soft)}
     .opt-row:first-child{border-top:none}
     .opt-left{display:flex;flex-direction:column;gap:2px}
     .opt-label{font-weight:700}
@@ -204,104 +171,185 @@
     .opt-price{font-weight:900;font-size:1.1rem}
     .opt-note{margin:10px 2px 0;color:var(--muted);font-size:.95rem}
 
-    /* ===== GUIDE ===== */
-    .guide-wrap{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
+    /* 안내사항 섹션 */
+    #guide{background:var(--panel)}
+    .guide-wrap{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow: var(--shadow);
+    }
     .guide-head{padding:20px;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;gap:12px;align-items:end}
     .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px}
     @media (max-width:900px){.guide-grid{grid-template-columns:1fr}}
-    .step{border:1px solid var(--line-soft);border-radius:14px;padding:16px}
+    .step{border:1px solid var(--line-soft);border-radius:14px;padding:16px;background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01))}
     .step h4{margin:0 0 6px}
     .fine{color:var(--muted);margin:0}
     .guide-list{padding:0 18px 18px}
     .guide-list ul{margin:8px 0 0 1em}
     .guide-foot{border-top:1px solid var(--line-soft);padding:14px 18px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
 
-    /* Location/FAQ/Footer */
+    /* === 편의 시설 및 서비스 (안내사항과 동일 톤) === */
+    #amenities{background:var(--panel)}
+    .amen-wrap{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow: var(--shadow);
+    }
+    .amen-head{
+      padding:20px;border-bottom:1px solid var(--line-soft);
+      display:flex;justify-content:space-between;gap:12px;align-items:end
+    }
+    .amen-grid{
+      display:grid;grid-template-columns:repeat(5,1fr);
+      gap:10px;padding:18px
+    }
+    @media (max-width:1000px){ .amen-grid{grid-template-columns:repeat(3,1fr)} }
+    @media (max-width:600px){ .amen-grid{grid-template-columns:1fr} }
+    .amen-card{
+      border:1px solid var(--line-soft);border-radius:14px;
+      padding:16px;display:flex;align-items:center;gap:14px;
+      background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01))
+    }
+    .amen-ico{
+      flex:0 0 auto;width:44px;height:44px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid var(--line-soft);background:#fff
+    }
+    .amen-ico i{font-size:22px;color:#111}
+    .amen-body{display:flex;flex-direction:column;gap:2px}
+    .amen-title{font-weight:800}
+    .amen-desc{color:var(--muted);font-size:.95rem}
+    .amen-foot{border-top:1px solid var(--line-soft);padding:14px 18px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+
+    /* FAQ / Location / Footer */
     .faq{display:grid;gap:10px}
-    details{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:12px;padding:14px}
+    details{background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));border:1px solid var(--line-soft);border-radius:12px;padding:14px}
     summary{font-weight:800;cursor:pointer}
+
     .location{display:grid;grid-template-columns: 1.2fr .8fr;gap:14px;align-items:start}
-    .mapbox{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01))}
-    .mapbox .placeholder{display:grid;place-items:center;aspect-ratio: 16/10;color:var(--muted)}
-    .info{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:12px;padding:16px}
+    /* 오시는 길 카드 스타일 */
+    #location .info {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 24px 28px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #location .info h3 { margin-bottom: 16px; font-weight: 600; }
+    #location .info dl { margin: 0; line-height: 1.6; }
+    #location .info dt { font-weight: 600; margin-top: 8px; }
+    #location .info dd { margin: 0 0 8px; color: #333; }
+    #location .info > div { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-start; }
+
+    /* 지도 래퍼에 그림자 추가 */
+    .mapbox{
+      border:1px solid var(--line-soft);
+      border-radius:12px;
+      overflow:hidden;
+      background:var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    /* 지도 미리보기: 2장 슬라이드 (페이드) */
+    .map-preview{position:relative;aspect-ratio:16/10;background:#fff}
+    .map-preview .slide{position:absolute;inset:0;opacity:0;transition:opacity 900ms ease}
+    .map-preview .slide.is-active{opacity:1}
+    .map-preview img{width:100%;height:100%;object-fit:cover}
+
+    .info{background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));border:1px solid var(--line-soft);border-radius:12px;padding:16px}
     .info dl{display:grid;grid-template-columns: 90px 1fr;gap:8px 12px;margin:0}
     .info dt{color:var(--muted)}
     .info dd{margin:0}
     @media (max-width: 920px){.location{grid-template-columns:1fr}}
-    footer{padding:36px 0;color:#c8cfda80;border-top:1px solid var(--line-soft)}
+
+    footer{padding:36px 0;color:#5f6c80;border-top:1px solid var(--line-soft)}
     .footer{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
     .sns{display:flex;gap:8px}
     .sns a{border:1px solid var(--line-soft);padding:7px 9px;border-radius:10px}
     .float-cta{position:fixed;right:14px;bottom:14px;z-index:80}
     @media (min-width:861px){.float-cta{display:none}}
 
-	/* === Mosaic Slider (모바일 스와이프 최적화) === */
-	.mosaic-slider{position:relative;border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));touch-action: pan-y;}
-	.mosaic-track{display:flex;transition:transform .45s cubic-bezier(.2,.6,.2,1);will-change:transform}
-	.mosaic{min-width:100%;padding:10px}
+    /* Mosaic Slider (밝은 톤) + 섹션 래퍼 그림자 추가 */
+    .mosaic-slider{
+      position:relative;
+      border:1px solid var(--line-soft);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+      touch-action: pan-y;
+      box-shadow: var(--shadow);
+    }
+    .mosaic-track{display:flex;transition:transform .45s cubic-bezier(.2,.6,.2,1);will-change:transform}
+    .mosaic{min-width:100%;padding:10px}
 
-	/* 기존 갤러리 그리드 재사용 (슬라이드 내부) */
-	.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-	.gallery-grid .tile{grid-column:span 4;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
-	.gallery-grid .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
-	.gallery-grid .tile.t2{grid-column:span 8}
-	.gallery-grid .tile.t3 img{aspect-ratio:3/4}
-	@media (max-width:920px){.gallery-grid .tile{grid-column:span 6}.gallery-grid .tile.t2{grid-column:span 12}}
-	@media (max-width:560px){.gallery-grid .tile{grid-column:span 12}}
+    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .gallery-grid .tile{grid-column:span 4;background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+    .gallery-grid .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+    .gallery-grid .tile.t2{grid-column:span 8}
+    .gallery-grid .tile.t3 img{aspect-ratio:3/4}
+    @media (max-width:920px){.gallery-grid .tile{grid-column:span 6}.gallery-grid .tile.t2{grid-column:span 12}}
+    @media (max-width:560px){.gallery-grid .tile{grid-column:span 12}}
 
-	/* Nav buttons */
-	.mosaic-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:1px solid var(--line-soft);background:rgba(0,0,0,.35);backdrop-filter:blur(6px);color:#fff;padding:10px 12px;border-radius:12px;cursor:pointer}
-	.mosaic-nav:hover{background:rgba(0,0,0,.5)}
-	.mosaic-prev{left:10px}
-	.mosaic-next{right:10px}
+    .mosaic-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:1px solid var(--line-soft);background:rgba(255,255,255,.95);backdrop-filter:blur(6px);color:#111;padding:10px 12px;border-radius:12px;cursor:pointer}
+    .mosaic-nav:hover{background:#fff}
+    .mosaic-prev{left:10px}
+    .mosaic-next{right:10px}
+    .mosaic-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px;z-index:4}
+    .mosaic-dot{width:8px;height:8px;border-radius:999px;border:1px solid var(--line-soft);background:#00000010}
+    .mosaic-dot.is-active{background:#00000060}
 
-	/* Dots */
-	.mosaic-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px;z-index:4}
-	.mosaic-dot{width:8px;height:8px;border-radius:999px;border:1px solid var(--line-soft);background:#ffffff22}
-	.mosaic-dot.is-active{background:#ffffffbb}
+    /* === Mobile menu backdrop === */
+    .menu-backdrop{
+      position: fixed; inset: 0; background: rgba(0,0,0,.35);
+      opacity: 0; pointer-events: none; transition: opacity .2s ease;
+      z-index: 59;
+    }
+    .menu-open .menu-backdrop{ opacity: 1; pointer-events: auto; }
+    .menu-open{ overflow: hidden; touch-action: none; }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header class="hdr" aria-label="주요 메뉴">
     <div class="container nav">
-      <a href="#home" class="brand" aria-label="바라봄 홈으로">
-		<img
-		  class="mark"
-		  src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA1MjBfMTM4%2FMDAxNzQ3NzE0OTI5NDA1.54gsoSj0OEwzXaf3Hr87UwjWW5_SA_-UzW4sutPf0usg.rahqpPL-eJP_h6yjUKH_jzB6yO3jRFyKxKNztOIG6hYg.JPEG%2FKakaoTalk_20250520_124535073_08.jpg"
-		  alt="BARABOM"
-		  loading="lazy"
-		  decoding="async"
-		/>
+      <a class="brand" aria-label="바라봄 홈으로" href="#home">
+        <img class="mark" src="assets/images/logo.jfif" alt="BARABOM" loading="lazy" decoding="async" />
         <div>
           <h1>BARABOM</h1>
           <small>셀프사진관</small>
         </div>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="모바일 메뉴">메뉴</button>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="모바일 메뉴">☰</button>
       <ul id="primaryNav" role="menubar">
         <li role="none"><a role="menuitem" href="#home">메인</a></li>
         <li role="none"><a role="menuitem" href="#pricing">가격표</a></li>
+        <!-- 새 메뉴 항목 -->
+        <li role="none"><a role="menuitem" href="#amenities">편의시설</a></li>
         <li role="none"><a role="menuitem" href="#guide">안내사항</a></li>
         <li role="none"><a role="menuitem" href="#faq">Q&A</a></li>
         <li role="none"><a role="menuitem" href="#location">위치</a></li>
+        <!-- 
         <li role="none"><a role="menuitem" class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약하기</a></li>
+        -->
       </ul>
     </div>
   </header>
+
+  <div class="menu-backdrop" aria-hidden="true"></div>
 
   <!-- Hero -->
   <main id="home" class="hero">
     <div class="container grid-hero">
       <div>
         <span class="kicker">PRIVATE · ELEGANT · TIMELESS</span>
-		<h2 class="headline">빛이 머무는 공간<br>나를 가장 예쁘게, <em style="font-style:normal;color:var(--gold)">바라봄</em><h2>
+        <h2 class="headline">빛이 머무는 공간<br>나를 가장 예쁘게, <em style="font-style:normal;color:var(--gold)">바라봄</em><h2>
         <p class="sub" style="font-size:large;">프라이빗 룸, 가족/커플/우정/프로필 촬영을 품격 있게 완성하세요.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener" style="width:100%">네이버 예약하기</a>
-			<!-- 
-			<a class="btn btn-ghost" href="#gallery">스튜디오 미리보기</a>
-			--> 
+          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener" style="width:100%">예약하기</a>
         </div>
       </div>
       <div class="hero-media" aria-hidden="true">
@@ -321,63 +369,53 @@
       <p class="section-sub">빛이 닿는 곳마다, 우리의 분위기로 채워지길</p>
 
       <div class="mosaic-slider" id="mosaicSlider" aria-label="스튜디오 샘플 슬라이더">
-		  <div class="mosaic-track">
-			<!-- Slide 1 : 기존 모자이크 그대로 -->
-			<div class="mosaic" aria-roledescription="slide">
-			  <div class="gallery-grid">
-				<figure class="tile t2"><img loading="lazy" src="assets/images/b03.png" alt="이미지1"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p12.jpg" alt="이미지2"></figure>
-				  
-				<figure class="tile"><img loading="lazy" src="assets/images/p01.jpg" alt="이미지3"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p07.jpg" alt="이미지4"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p09.jpg" alt="이미지4"></figure>
-				  
-				<figure class="tile"><img loading="lazy" src="assets/images/p10.jpg" alt="이미지5"></figure>
-				<figure class="tile t2"><img loading="lazy" src="assets/images/p04.jpg" alt="이미지6"></figure>
-			  </div>
-			</div>
-
-			<!-- Slide 2 : 다른 사진 세트 (원하는 이미지로 바꿔 넣기) -->
-			<div class="mosaic" aria-roledescription="slide">
-			  <div class="gallery-grid">
-				<figure class="tile t2"><img loading="lazy" src="assets/images/b01.png" alt="이미지1"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/c04.jpg" alt="이미지2"></figure>
-				  
-				<figure class="tile"><img loading="lazy" src="assets/images/p08.jpg" alt="이미지3"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p11.jpg" alt="이미지4"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p02.jpg" alt="이미지4"></figure>
-				  
-				<figure class="tile"><img loading="lazy" src="assets/images/p05.jpg" alt="이미지5"></figure>
-				<figure class="tile t2"><img loading="lazy" src="assets/images/p07.jpg" alt="이미지6"></figure>
-			  </div>
-			</div>
-
-			<!-- Slide 3 : 필요 시 추가 -->
-			<div class="mosaic" aria-roledescription="slide">
-			  <div class="gallery-grid">
-				<!-- 동일한 패턴으로 이미지 6장 배치 -->
-				<figure class="tile t2"><img loading="lazy" src="assets/images/b02.png" alt="이미지1"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p08.jpg" alt="이미지2"></figure>
-				  
-				<figure class="tile"><img loading="lazy" src="assets/images/c05.jpg" alt="이미지3"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p05.jpg" alt="이미지4"></figure>
-				<figure class="tile"><img loading="lazy" src="assets/images/p04.jpg" alt="이미지4"></figure>
-				  
-				<figure class="tile"><img loading="lazy" src="assets/images/p03.jpg" alt="이미지5"></figure>
-				<figure class="tile t2"><img loading="lazy" src="assets/images/p06.jpg" alt="이미지6"></figure>
-			  </div>
-			</div>
-		  </div>
-
-		  <!-- Controls -->
-		  <button class="mosaic-nav mosaic-prev" aria-label="이전 슬라이드" aria-controls="mosaicSlider">‹</button>
-		  <button class="mosaic-nav mosaic-next" aria-label="다음 슬라이드" aria-controls="mosaicSlider">›</button>
-		  <div class="mosaic-dots" aria-label="슬라이드 인디케이터"></div>
-		</div>
+        <div class="mosaic-track">
+          <!-- Slide 1 -->
+          <div class="mosaic" aria-roledescription="slide">
+            <div class="gallery-grid">
+              <figure class="tile t2"><img loading="lazy" src="assets/images/b03.png" alt="이미지1"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p12.jpg" alt="이미지2"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p01.jpg" alt="이미지3"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p07.jpg" alt="이미지4"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p09.jpg" alt="이미지4"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p10.jpg" alt="이미지5"></figure>
+              <figure class="tile t2"><img loading="lazy" src="assets/images/p04.jpg" alt="이미지6"></figure>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="mosaic" aria-roledescription="slide">
+            <div class="gallery-grid">
+              <figure class="tile t2"><img loading="lazy" src="assets/images/b01.png" alt="이미지1"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/c04.jpg" alt="이미지2"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p08.jpg" alt="이미지3"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p11.jpg" alt="이미지4"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p02.jpg" alt="이미지4"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p05.jpg" alt="이미지5"></figure>
+              <figure class="tile t2"><img loading="lazy" src="assets/images/p07.jpg" alt="이미지6"></figure>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="mosaic" aria-roledescription="slide">
+            <div class="gallery-grid">
+              <figure class="tile t2"><img loading="lazy" src="assets/images/b02.png" alt="이미지1"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p08.jpg" alt="이미지2"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/c05.jpg" alt="이미지3"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p05.jpg" alt="이미지4"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p04.jpg" alt="이미지4"></figure>
+              <figure class="tile"><img loading="lazy" src="assets/images/p03.jpg" alt="이미지5"></figure>
+              <figure class="tile t2"><img loading="lazy" src="assets/images/p06.jpg" alt="이미지6"></figure>
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <button class="mosaic-nav mosaic-prev" aria-label="이전 슬라이드" aria-controls="mosaicSlider">‹</button>
+        <button class="mosaic-nav mosaic-next" aria-label="다음 슬라이드" aria-controls="mosaicSlider">›</button>
+        <div class="mosaic-dots" aria-label="슬라이드 인디케이터"></div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== PRICING ===== -->
+  <!-- PRICING -->
   <section id="pricing" aria-label="가격표">
     <div class="container">
       <div class="pricing-wrap">
@@ -390,13 +428,17 @@
           <article class="plan" aria-label="1인 요금">
             <div class="name"><b>혼자 (1인)</b><span class="inc">인화 2장 포함</span></div>
             <div class="price">₩20,000</div>
+            <!--
             <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약하기</a>
+            -->
           </article>
 
           <article class="plan" aria-label="2~4인 요금">
             <div class="name"><b>같이 (2~4인)</b><span class="inc">인화 4장 포함</span></div>
             <div class="price">₩30,000</div>
+            <!-- 
             <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약하기</a>
+            -->
           </article>
         </div>
 
@@ -434,7 +476,81 @@
     </div>
   </section>
 
-  <!-- ===== GUIDE ===== -->
+  <!-- AMENITIES (신규 섹션) -->
+  <section id="amenities" aria-label="편의 시설 및 서비스">
+    <div class="container">
+      <div class="amen-wrap">
+        <div class="amen-head">
+          <div>
+            <h3 class="section-title" style="margin:0">편의 시설 및 서비스</h3>
+            <p class="section-sub" style="margin:6px 0 0">이용 전 꼭 알아두면 좋은 기본 편의/정책 안내</p>
+          </div>
+            <!--
+            <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">예약 확인</a>
+            -->
+        </div>
+
+        <div class="amen-grid" role="list">
+          <!-- 예약 -->
+          <article class="amen-card" role="listitem">
+            <div class="amen-ico" aria-hidden="true"><i class="ri-calendar-check-line"></i></div>
+            <div class="amen-body">
+                <span class="amen-title">사전 예약제</span>
+                <!-- 
+                <span class="amen-desc">네이버 예약으로 간편하게 이용</span>
+                -->
+            </div>
+          </article>
+          <!-- 무선 인터넷 -->
+          <article class="amen-card" role="listitem">
+            <div class="amen-ico" aria-hidden="true"><i class="ri-wifi-line"></i></div>
+            <div class="amen-body">
+                <span class="amen-title">무선 인터넷</span>
+                <!-- 
+                <span class="amen-desc">촬영 중에도 Wi-Fi 사용 가능</span>
+                -->
+            </div>
+          </article>
+          <!-- 반려동물 동반 -->
+          <article class="amen-card" role="listitem">
+            <div class="amen-ico" aria-hidden="true"><i class="fa-solid fa-dog"></i></div>
+            <div class="amen-body">
+                <span class="amen-title">반려동물 동반</span>
+                <!-- 
+                <span class="amen-desc">매너벨트 착용 시 동반 가능</span>
+                -->
+            </div>
+          </article>
+          <!-- 남/녀 화장실 구분 -->
+          <article class="amen-card" role="listitem">
+            <div class="amen-ico" aria-hidden="true"><i class="fa-solid fa-restroom"></i></div>
+            <div class="amen-body">
+                <span class="amen-title">남·녀 화장실 구분</span>
+                <!-- 
+                <span class="amen-desc">층 내 공용 화장실 분리 운영</span>
+                -->
+            </div>
+          </article>
+          <!-- 단체 이용 가능 -->
+          <article class="amen-card" role="listitem">
+            <div class="amen-ico" aria-hidden="true"><i class="ri-group-line"></i></div>
+            <div class="amen-body">
+              <span class="amen-title">단체 이용 가능</span>
+              <!--
+              <span class="amen-desc">최대 인원 사전 문의 바랍니다</span>
+              -->
+            </div>
+          </article>
+        </div>
+
+        <div class="amen-foot">
+          * 반려동물/영유아 동반 시 안전을 위해 보호자 동행 필수 · 대여 소품 이용 후 제자리에 부탁드려요
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
   <section id="guide" aria-label="안내사항">
     <div class="container">
       <div class="guide-wrap">
@@ -443,7 +559,9 @@
             <h3 class="section-title" style="margin:0">안내사항</h3>
             <p class="section-sub" style="margin:6px 0 0">예약부터 촬영·인화까지의 기본 안내입니다.</p>
           </div>
+          <!-- 
           <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">지금 예약</a>
+          -->
         </div>
 
         <div class="guide-grid" role="list">
@@ -451,7 +569,7 @@
             <h4>100% 무인 예약제</h4>
             <p class="fine">원하는 시간으로 예약 후 비대면 입실로 이용합니다.</p>
           </article>
-          <article class="step" role="listitem">
+        <article class="step" role="listitem">
             <h4>이용시간 60분</h4>
             <p class="fine">입실·준비·촬영·인화 선택까지 여유 있게 진행.</p>
           </article>
@@ -475,26 +593,61 @@
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- FAQ (PDF 내용 반영) -->
   <section id="faq" aria-label="자주 묻는 질문">
     <div class="container">
       <h3 class="section-title">Q&A</h3>
       <div class="faq">
         <details>
-          <summary>촬영은 어떻게 진행되나요?</summary>
-          <p>입실 후 간단 안내 후 셀프 타이머 또는 라이브 뷰로 진행합니다. 직원 호출 벨을 통해 도움을 받으실 수 있어요.</p>
+          <summary>1. 무인스튜디오는 어떤 시스템인가요?</summary>
+          <p>지정된 이용시간내에서 자유롭게 촬영하신 뒤 인화하실 사진을 셀렉하여 인화하시고,<br />전체원본파일은 메일 or USB로 가져가시는 시스템입니다.<br />(촬영, 셀렉, 인화, 원본전송 모두 고객님께서 셀프로 진행됩니다.)</p>
         </details>
+
         <details>
-          <summary>의상/소품 지참이 가능한가요?</summary>
-          <p>가능합니다. 간단 소품은 무료 대여, 외부 소품 지참도 환영합니다.</p>
+          <summary>2. 카메라, 장비 만질 수 있나요? 각도조절되나요?</summary>
+          <p>카메라 및 조명기기는 고정된 상태로만 촬영이 진행되며, 각도조절 및 빛조절은 불가합니다.<br />기본 세팅값을 바꿀시 고장 및 구도 틀어짐 등 촬영불가할 수 있으니 절대 만지지 말아주세요.</p>
         </details>
+
         <details>
-          <summary>보정은 얼마나 소요되나요?</summary>
-          <p>원본은 당일 전달, 보정 컷은 영업일 기준 2–3일 내 이메일 발송해 드립니다.</p>
+          <summary>3. 전체원본파일은 어떻게 가져가나요?</summary>
+          <p>압축 후 네이버메일 or 개인 USB로 가져가시면 됩니다.<br />가이드북에는 메일전송으로 안내되어있으며, 개인USB를 가져오셔서 옮기셔도 됩니다.</p>
         </details>
+
         <details>
-          <summary>주차는 가능한가요?</summary>
-          <p>인근 유료 주차장 이용이 가능합니다. 위치는 아래 지도와 네이버 지도를 참고해 주세요.</p>
+          <summary>4. 일찍 들어가도 되나요? 늦게 들어가도 되나요?</summary>
+          <p><b>일찍 입장</b>: 별도의 대기공간이 없어 정시입실 부탁드립니다. 일찍 입장하실 시 이전 고객님이 불편해하실 수 있어 양해부탁드립니다.</p>
+          <p><b>늦게 입장</b>: 늦으시는 건 상관없으며 이용시간동안 자유롭게 이용하시면 됩니다. 다만 고객님의 촬영시간이 줄어들기 때문에 꼭 늦지 않게 와주시길 바랍니다.</p>
+        </details>
+
+        <details>
+          <summary>5. 최대 촬영 가능 인원은?</summary>
+          <p>최대촬영가능인원은 10명으로 권장드립니다.<br />단체촬영시 2열 또는 3열로만 가능하십니다. (1열 불가)</p>
+        </details>
+
+        <details>
+          <summary>6. 반려동물, 영유아 관련 안내</summary>
+          <p><b>인원수 포함 여부</b>: 반려동물, 영유아도 인원수에 포함하여 예약하시면 됩니다. 예) 어른1명, 아기1명, 반려동물1마리 → 총 3명으로 보아 2~4인 3만원 예약</p>
+          <p><b>동반 시 유의사항</b>: 기저귀나 배변패드 지참 필수! (실내에 대소변을 볼 시 유상의 청소비가 청구될 수 있습니다.)</p>
+        </details>
+
+        <details>
+          <summary>7. 증명사진, 여권사진, 제품사진도 촬영되나요?</summary>
+          <p>바라봄은 셀프사진관으로 카메라 및 조명기기가 고정되어 있어 증명사진, 여권사진, 제품사진 등은 촬영불가합니다.</p>
+        </details>
+
+        <details>
+          <summary>8. 촬영 소품으로 케이크 반입 가능한가요?</summary>
+          <p>원칙은 음식물 반입금지이나, 촬영용으로 사용 시 가지고 입장 가능합니다.<br />다른 분들도 사용하시는 공간이라 바닥에 부스러기와 뒷처리만 잘해주시면 됩니다.<br />무인으로 운영되기 때문에 바닥에 흘릴 시 다음 타임 손님분께서 피해를 보시기 때문에 깔끔하게 이용 부탁드립니다.</p>
+        </details>
+
+        <details>
+          <summary>9. 보정은 얼마나 소요되나요?</summary>
+          <p>원본은 당일 즉시, 보정 컷은 영업일 기준 2~3일 내 순차적으로 이메일 발송 해드립니다.</p>
+        </details>
+
+        <details>
+          <summary>10. 주차는 가능한가요?</summary>
+          <p>건물 내 주차장이 있으며 유료입니다(30분당 1,000원).<br />주말 및 공휴일 무료주차 안내 → 동안구청과 공영주차장이 무료입니다.</p>
         </details>
       </div>
     </div>
@@ -504,8 +657,10 @@
   <section id="location" aria-label="위치">
     <div class="container location">
       <div class="mapbox">
-        <div class="placeholder">
-          <p>지도 미리보기 영역입니다.<br>아래 버튼으로 네이버 지도를 여세요.</p>
+        <!-- 지도 미리보기 슬라이드(2장) -->
+        <div class="map-preview" aria-label="지도 미리보기 슬라이드">
+          <div class="slide is-active"><img src="assets/images/map01.png" alt="지도 미리보기 1"></div>
+          <div class="slide"><img src="assets/images/map02.png" alt="지도 미리보기 2"></div>
         </div>
       </div>
       <aside class="info">
@@ -517,7 +672,7 @@
           <dt>주차</dt><dd>최초 1시간 2,000원<br/>추가 요금 30분당 1,000원<br/>주말 동안구청 주차장 무료이용</dd>
         </dl>
         <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">네이버지도에서 보기 · 예약</a>
+          <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener">지도 보기 · 예약</a>
           <a class="btn btn-ghost" href="#home">맨 위로</a>
         </div>
       </aside>
@@ -540,26 +695,59 @@
   </div>
 
   <script>
-    // Mobile menu toggle
+    // Mobile menu toggle + backdrop + scroll lock
     const body = document.body;
     const toggle = document.getElementById('menuToggle');
-    toggle?.addEventListener('click', () => {
-      body.classList.toggle('menu-open');
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
+    const nav = document.getElementById('primaryNav');
+    const backdrop = document.querySelector('.menu-backdrop');
+
+    function openMenu(){
+      body.classList.add('menu-open');
+      toggle?.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu(){
+      body.classList.remove('menu-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+    function isMenuOpen(){
+      return body.classList.contains('menu-open');
+    }
+
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isMenuOpen() ? closeMenu() : openMenu();
     });
-    document.getElementById('primaryNav')?.addEventListener('click', (e) => {
-      if(e.target.tagName === 'A' && body.classList.contains('menu-open')){
-        body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded','false');
+
+    // 메뉴 항목 클릭 시 닫기
+    nav?.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && isMenuOpen()) {
+        closeMenu();
       }
     });
 
-    // Year
+    // 백드롭 클릭 시 닫기
+    backdrop?.addEventListener('click', () => {
+      if (isMenuOpen()) closeMenu();
+    });
+
+    // 메뉴 외부 터치/클릭 시 닫기
+    document.addEventListener('click', (e) => {
+      if (!isMenuOpen()) return;
+      const withinToggle = toggle?.contains(e.target);
+      const withinNav = nav?.contains(e.target);
+      if (!withinToggle && !withinNav) closeMenu();
+    }, { passive: true });
+
+    // ESC 키로도 닫기
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen()) closeMenu();
+    });
+
+    // 연도 표시
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- Mosaic slider: 모바일 스와이프 (탭과 명확히 구분) -->
+  <!-- Mosaic slider: 모바일 스와이프 -->
   <script>
   (function(){
     const root = document.getElementById('mosaicSlider');
@@ -571,17 +759,9 @@
     const dotsWrap = root.querySelector('.mosaic-dots');
 
     let index = 0;
-    let isPointerDown = false;      // 다운 상태
-    let isDragging = false;         // 실제 가로 스와이프 활성화 여부(탭과 구분)
-    let startX = 0, startY = 0;     // 시작 좌표
-    let lastX = 0, deltaX = 0;      // 누적 이동
-    let lastT = 0, velocity = 0;    // 속도 추정
-    let moved = false;              // 드래그 후 클릭 방지
-
-    // Autoplay
+    let isPointerDown = false, isDragging = false, startX = 0, startY = 0, lastX = 0, deltaX = 0, lastT = 0, velocity = 0, moved = false;
     let autoplayId = null; const INTERVAL = 5000;
 
-    // dots
     slides.forEach((_, i)=>{
       const d = document.createElement('button');
       d.className = 'mosaic-dot' + (i===0?' is-active':'');
@@ -592,62 +772,34 @@
 
     function update(){
       track.style.transform = `translateX(-${index*100}%)`;
-      dotsWrap.querySelectorAll('.mosaic-dot').forEach((el,i)=>{
-        el.classList.toggle('is-active', i===index);
-      });
+      dotsWrap.querySelectorAll('.mosaic-dot').forEach((el,i)=>{ el.classList.toggle('is-active', i===index); });
     }
-    function go(i){
-      index = (i+slides.length)%slides.length;
-      update();
-      restartAutoplay();
-    }
+    function go(i){ index = (i+slides.length)%slides.length; update(); restartAutoplay(); }
 
     prev.addEventListener('click', ()=>go(index-1));
     next.addEventListener('click', ()=>go(index+1));
 
-    // ----- Pointer-based swipe with activation threshold -----
-    const ACTIVATE_PX = 12;        // 이 정도 이상 움직여야 드래그로 인정
-    const ANGLE_RATIO = 1.2;       // 수평/수직 구분(수평이 좀 더 커야 스와이프)
+    const ACTIVATE_PX = 12, ANGLE_RATIO = 1.2;
 
-    const onDown = (e)=>{
-      isPointerDown = true; isDragging = false; moved = false;
-      const p = getPoint(e);
-      startX = lastX = p.x; startY = p.y; deltaX = 0; velocity = 0; lastT = performance.now();
-      stopAutoplay();
-    };
+    const onDown = (e)=>{ isPointerDown = true; isDragging = false; moved = false;
+      const p = getPoint(e); startX = lastX = p.x; startY = p.y; deltaX = 0; velocity = 0; lastT = performance.now(); stopAutoplay(); };
 
     const onMove = (e)=>{
       if(!isPointerDown) return;
-      const p = getPoint(e);
-      const dx = p.x - lastX;
-      const dyFromStart = Math.abs(p.y - startY);
-      const dxFromStart = Math.abs(p.x - startX);
+      const p = getPoint(e); const dx = p.x - lastX;
+      const dyFromStart = Math.abs(p.y - startY); const dxFromStart = Math.abs(p.x - startX);
 
-      // 아직 드래그로 활성화되지 않았다면, 방향/임계값 판단
       if(!isDragging){
-        if(dxFromStart < ACTIVATE_PX && dyFromStart < ACTIVATE_PX){
-          return; // 작은 흔들림은 무시 (탭으로 간주)
-        }
-        // 수평 우세할 때만 드래그 시작
+        if(dxFromStart < ACTIVATE_PX && dyFromStart < ACTIVATE_PX){ return; }
         if(dxFromStart >= dyFromStart * ANGLE_RATIO){
-          isDragging = true;
-          track.style.transition = 'none';
-          root.classList.add('dragging');
-          e.preventDefault?.();
-        } else {
-          // 수직 스크롤 우세 → 슬라이더 개입 안 함
-          cancelDrag();
-          return;
-        }
+          isDragging = true; track.style.transition = 'none'; root.classList.add('dragging'); e.preventDefault?.();
+        } else { cancelDrag(); return; }
       }
 
-      // 드래그 활성화 이후
-      const now = performance.now();
-      const dt = Math.max(1, now - lastT);
+      const now = performance.now(); const dt = Math.max(1, now - lastT);
       velocity = 0.8*velocity + 0.2*(dx/dt);
       deltaX += dx; lastX = p.x; lastT = now; moved = true;
 
-      // 가장자리 저항감
       const atFirst = index === 0 && deltaX > 0;
       const atLast = index === slides.length-1 && deltaX < 0;
       const resistance = (atFirst || atLast) ? 0.35 : 1;
@@ -656,76 +808,55 @@
     };
 
     const onUp = ()=>{
-      if(!isPointerDown){ return; }
+      if(!isPointerDown) return;
       isPointerDown = false;
 
-      // 드래그가 활성화되지 않았다면 → 탭으로 처리(슬라이드 변경 없음)
       if(!isDragging){ startAutoplay(); return; }
 
-      // 결과 판정
-      track.style.transition = '';
-      root.classList.remove('dragging');
-      const width = root.clientWidth;
-      const moveThreshold = Math.max(40, width*0.16); // 최소 40px 보장
-      const velocityThreshold = 0.45/1000;            // 보조 기준(px/ms)
-
+      track.style.transition = ''; root.classList.remove('dragging');
+      const width = root.clientWidth; const moveThreshold = Math.max(40, width*0.16); const velocityThreshold = 0.45/1000;
       const shouldPrev = (deltaX > moveThreshold) || (deltaX > 10 && velocity >  velocityThreshold);
       const shouldNext = (deltaX < -moveThreshold) || (deltaX < -10 && velocity < -velocityThreshold);
-      if(shouldPrev)      go(index-1);
-      else if(shouldNext) go(index+1);
-      else                update();
+      if(shouldPrev) go(index-1); else if(shouldNext) go(index+1); else update();
 
-      // 드래그 후 클릭 오작동 방지
       if(moved){
         const cancelClick = (ev)=>{ ev.stopPropagation(); ev.preventDefault(); track.removeEventListener('click', cancelClick, true); };
         track.addEventListener('click', cancelClick, true);
       }
-
-      // reset
       isDragging = false; deltaX = 0; velocity = 0; startAutoplay();
     };
 
-    function getPoint(e){
-      if(e.touches && e.touches[0]) return {x:e.touches[0].clientX, y:e.touches[0].clientY};
-      return {x:e.clientX, y:e.clientY};
-    }
-    function cancelDrag(){
-      isPointerDown = false; isDragging = false; deltaX = 0; velocity = 0;
-      track.style.transition = ''; root.classList.remove('dragging');
-    }
+    function getPoint(e){ if(e.touches && e.touches[0]) return {x:e.touches[0].clientX, y:e.touches[0].clientY}; return {x:e.clientX, y:e.clientY}; }
+    function cancelDrag(){ isPointerDown = false; isDragging = false; deltaX = 0; velocity = 0; track.style.transition = ''; root.classList.remove('dragging'); }
 
-    // Pointer + touch/mouse 호환
     track.addEventListener('pointerdown', onDown, {passive:true});
     track.addEventListener('pointermove', onMove);
     track.addEventListener('pointerup', onUp);
     track.addEventListener('pointercancel', onUp);
-
-    // 반응형 리사이즈 보정
     window.addEventListener('resize', update, {passive:true});
 
-    // 자동 넘김
-    function startAutoplay(){
-      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      stopAutoplay();
-      autoplayId = setInterval(()=>go(index+1), INTERVAL);
-    }
+    function startAutoplay(){ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; stopAutoplay(); autoplayId = setInterval(()=>go(index+1), INTERVAL); }
     function stopAutoplay(){ if(autoplayId) clearInterval(autoplayId); autoplayId = null; }
     function restartAutoplay(){ stopAutoplay(); startAutoplay(); }
 
-    document.addEventListener('visibilitychange', ()=>{
-      if(document.hidden) stopAutoplay(); else startAutoplay();
-    });
+    document.addEventListener('visibilitychange', ()=>{ if(document.hidden) stopAutoplay(); else startAutoplay(); });
 
-    update();
-    startAutoplay();
+    update(); startAutoplay();
   })();
+  </script>
+
+  <!-- Map preview (2장 페이드 슬라이드) -->
+  <script>
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.map-preview .slide'));
+      if(slides.length < 2) return;
+      let i = 0;
+      setInterval(()=>{
+        slides[i].classList.remove('is-active');
+        i = (i + 1) % slides.length;
+        slides[i].classList.add('is-active');
+      }, 3000);
+    })();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
