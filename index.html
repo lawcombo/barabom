@@ -58,7 +58,7 @@
 
 
 	/* 상단 고정 */
-
+/*
 	html, body {
 	  height: 100%;
 	  overflow: hidden;
@@ -71,7 +71,7 @@
 	  overflow-y: auto;
 	  -webkit-overflow-scrolling: touch;
 	}
-
+*/
 
     /* Header */
     .hdr{position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line-soft);
@@ -112,7 +112,10 @@
     }
 
     /* Hero */
+	/*
     .hero{padding:50px 0 48px}
+	*/
+	.hero{padding:20px 0 48px}
     .grid-hero{display:grid;grid-template-columns: 1.2fr 1fr;gap:36px;align-items:center}
     .kicker{display:inline-block;font-weight:700;color:#5d7db5;letter-spacing:.18em;font-size:.9rem;margin-bottom:8px}
     .headline{font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.15;margin:0 0 12px;font-weight:900}
@@ -470,7 +473,7 @@
   <!-- Header -->
   <header class="hdr" aria-label="주요 메뉴">
     <div class="container nav">
-      <a class="brand" aria-label="바라봄 홈으로" href="#home">
+      <a class="brand" aria-label="바라봄 홈으로" href="javascript:void(0)" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
         <img class="mark" src="assets/images/logo.jfif" alt="BARABOM" loading="eager" fetchpriority="high" decoding="async" />
 
         <div>
@@ -480,7 +483,7 @@
       </a>
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="모바일 메뉴">☰</button>
       <ul id="primaryNav" role="menubar">
-        <li role="none"><a role="menuitem" href="#home">메인</a></li>
+        <li role="none"><a role="menuitem" href="javascript:void(0)" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">메인</a></li>
         <li role="none"><a role="menuitem" href="#pricing">가격표</a></li>
         <li role="none"><a role="menuitem" href="#amenities">편의시설</a></li>
         <li role="none"><a role="menuitem" href="#guide">안내사항</a></li>
@@ -496,7 +499,7 @@
   <main id="home" class="hero">
     <div class="container grid-hero">
       <div>
-        <span class="kicker" style="font-family:'Noto Sans KR',sans-serif;font-weight:800;letter-spacing:.14em;color:#ff77a9;background:rgba(255,119,169,.10);padding:6px 10px;border-radius:999px;display:inline-block;">PRIVATE · ELEGANT · TIMELESS</span>
+        <span class="kicker" style="font-family:'Noto Sans KR',sans-serif;font-weight:800;letter-spacing:.14em;color:#ff77a9;background:rgba(255,119,169,.10);padding:6px 10px;border-radius:999px;display:inline-block;">PRIVATE · ELEGANT · MEMORABLE</span>
         <h2 class="headline" style="font-family:'Spoqa Han Sans Neo',sans-serif;font-weight:900;letter-spacing:-.01em;text-shadow:0 2px 0 rgba(0,0,0,.04);">빛이 머무는 공간<br>나를 가장 예쁘게, <em style="font-style:normal;color:var(--gold)">바라봄</em></h2>
 		
         <p class="sub" style="font-size:medium;font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:.02em;">프라이빗 룸, 가족/커플/우정/프로필 촬영을 품격 있게 완성하세요.</p>
@@ -1801,6 +1804,8 @@
   lazies.forEach(img => io.observe(img));
 })();
 </script>
+
+
 
 
 </body>
