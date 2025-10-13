@@ -498,20 +498,7 @@
     radial-gradient(1000px 200px at 100% 10%, rgba(214,178,87,.08), transparent 60%);
   mix-blend-mode: normal;
 }
-#location .mapbox::after{
-  /* 가짜 지도 컨트롤(줌 버튼 느낌) */
-  content:""; position:absolute; top:12px; right:12px; width:72px; height:72px;
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7));
-  border:1px solid var(--line-soft);
-  box-shadow: 0 6px 18px rgba(0,0,0,.06);
-  /* 두 개의 버튼처럼 분할 */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  padding:6px;
-}
+
 #location .map-preview{
   aspect-ratio: 16/10;
   background:
@@ -1989,4 +1976,5 @@ header, section, footer{
 
 </body>
 </html>
+
 
