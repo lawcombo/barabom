@@ -57,6 +57,13 @@
       section{padding:48px 0} /* 모바일에서 스크롤 길이 축소 */
     }
 
+	  /* 전역 패널을 '살짝 투명'으로 바꿈 */
+:root{
+  --panel: color-mix(in srgb, #ffffff 94%, transparent);
+}
+
+/* 혹시 body/html에 배경이 있으면 투명으로 */
+html, body{ background: transparent !important; }
 
 	/* 상단 고정 */
 /*
@@ -1976,5 +1983,6 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
