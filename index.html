@@ -81,7 +81,7 @@
     .btn-ghost{border:1px solid var(--line-soft);color:var(--text);background:transparent}
     .btn-ghost:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
     .btn-primary{
-      color:#191919;background:linear-gradient(180deg,var(--gold),var(--gold-deep));border:0;
+      color:white;;background:linear-gradient(180deg,var(--gold),var(--gold-deep));border:0;
       box-shadow:0 8px 22px rgba(184,147,57,.25)
     }
     .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
@@ -116,10 +116,10 @@
     /* 골드 라인 애니메이션 */
     @keyframes sweepGlow { 0%{background-position:0% 50%;opacity:.45} 50%{background-position:100% 50%;opacity:.85} 100%{background-position:0% 50%;opacity:.45} }
     @media (prefers-reduced-motion: reduce){
-      #gallery::before, #pricing::before, #guide::before, #faq::before, #amenities::before, #location::before { animation: none !important; opacity: .5; }
+      #gallery::before, #pricing::before, #guide::before, #faq::before, #amenities::before, #location::before, #reviews::before { animation: none !important; opacity: .5; }
     }
-    #gallery, #pricing, #guide, #faq, #amenities, #location { position: relative; }
-    #gallery::before, #pricing::before, #guide::before, #faq::before, #amenities::before, #location::before{
+    #gallery, #pricing, #guide, #faq, #amenities, #location, #reviews { position: relative; }
+    #gallery::before, #pricing::before, #guide::before, #faq::before, #amenities::before, #location::before, #reviews::before{
       content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:80%; height:2px;
       background:linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(214,178,87,0.0) 10%, rgba(214,178,87,0.7) 50%, rgba(214,178,87,0.0) 90%, rgba(0,0,0,0) 100%);
       background-size:200% 100%; animation:sweepGlow 8s ease-in-out infinite; pointer-events:none;
@@ -257,7 +257,7 @@
     }
     #location .info h3 { margin-bottom: 16px; font-weight: 600; }
     #location .info dl { margin: 0; line-height: 1.6; }
-    #location .info dt { font-weight: 600; margin-top: 8px; }
+    #location .info dt { font-weight: 600; margin-top: 0px; }
     #location .info dd { margin: 0 0 8px; color: #333; }
     #location .info > div { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-start; }
 
@@ -343,7 +343,110 @@
 
 
 
+  
+/* Reviews */
+#reviews{background:var(--panel)}
+.reviews-wrap{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow: var(--shadow);
+}
+.reviews-head{
+  padding:20px;border-bottom:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;gap:12px;align-items:end
+}
+.reviews-body{padding:18px}
+.review-slider{
+  position:relative;
+  border:1px solid var(--line-soft);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  touch-action: pan-y;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+}
+.review-track{
+  display:flex;gap:12px;padding:14px;
+  transition:transform .45s cubic-bezier(.2,.6,.2,1);
+  will-change:transform;
+}
+.review-card{
+  min-width: clamp(260px, 40vw, 340px);
+  border:1px solid var(--line-soft); border-radius:14px;
+  background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  padding:16px; display:flex; flex-direction:column; gap:12px;
+}
+.review-head{display:flex;align-items:center;gap:12px}
+.review-ava{width:42px;height:42px;border-radius:50%;overflow:hidden;border:1px solid var(--line-soft);flex:0 0 auto;background:#fff}
+.review-ava img{width:100%;height:100%;object-fit:cover}
+.review-meta{display:flex;flex-direction:column;line-height:1.2}
+.review-name{font-weight:800}
+.review-date{font-size:.9rem;color:var(--muted)}
+.review-stars{display:flex;gap:2px}
+.review-stars i{color:#f1b72c}
+.review-text{color:#323743}
+.review-source{font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.review-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;border:1px solid var(--line-soft);background:rgba(255,255,255,.95);backdrop-filter:blur(6px);color:#111;padding:10px 12px;border-radius:12px;cursor:pointer}
+.review-prev{left:2px}
+.review-next{right:2px}
+.review-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:8px;z-index:2}
+.review-dot{width:8px;height:8px;border-radius:999px;border:1px solid var(--line-soft);background:#00000010}
+.review-dot.is-active{background:#00000060}
+/* 수정된 코드 */
+/* ===== Reviews 레이아웃 패치 ===== */
+/* PC(>=861px): 한 줄 최대 3개, 좌우/카드 간격 일정 */
+@media (min-width: 861px){
+  .review-track{
+    gap:16px;
+    padding:16px;
+  }
+  .review-card{
+    /* 3열 고정: (전체폭 - 간격*2) / 3 */
+    flex: 0 0 calc((100% - (16px * 2)) / 3);
+    min-width: calc((100% - (16px * 2)) / 3);
+  }
+}
+
+/* 태블릿(561~860px): 2열 */
+@media (min-width: 561px) and (max-width: 860px){
+  .review-track{ gap:12px; }
+  .review-card{
+    /* (전체폭 - 간격) / 2 */
+    flex: 0 0 calc((100% - 12px) / 2);
+    min-width: calc((100% - 12px) / 2);
+  }
+}
+
+/* 모바일(<=560px): 1열 + 양옆 버튼에 내용 가림 방지 */
+@media (max-width: 560px){
+  /* 슬라이더 내부에 좌우 여백을 주어 버튼 아래로 컨텐츠가 들어가지 않게 처리 */
+  .review-slider{ padding: 0 40px; }
+
+  .review-track{
+    gap:10px;
+    padding:10px 0; /* 좌우 패딩은 slider에 맡김 */
+  }
+  .review-card{
+    flex: 0 0 100%;
+    min-width: 100%;
+    padding: 12px;       /* 살짝 컴팩트 */
+    border-radius: 10px; /* 모바일 둥글기 */
+  }
+  .review-prev,
+  .review-next{
+    transform: translateY(-50%) scale(.9); /* 버튼 살짝 축소 */
+  }
+}
+
+
   </style>
+
+<style>
+.review-nav[disabled]{opacity:.35;cursor:not-allowed;pointer-events:none;}
+</style>
+
 </head>
 <body>
   <!-- Header -->
@@ -402,7 +505,7 @@
 					color: #c32aa3;
 					font-weight: 600;
 					border-radius: 16px;
-					padding: 14px 20px;
+					padding: 11px 20px;
 					transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 					box-shadow: 0 2px 8px rgba(131, 58, 180, 0.15);
 					display: flex;
@@ -431,7 +534,7 @@
 					color: #03c75a;
 					font-weight: 600;
 					border-radius: 16px;
-					padding: 14px 20px;
+					padding: 11px 20px;
 					transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 					box-shadow: 0 2px 8px rgba(3, 199, 90, 0.15);
 					display: flex;
@@ -468,7 +571,7 @@
         <div class="gallery-head">
           <div>
             <h3 class="section-title"><span class="title-ico"><i class="ri-image-2-line"></i></span>빛으로 담아낸 순간들</h3>
-            <p class="section-sub">빛이 닿는 곳마다, 우리의 분위기로 채워지길</p>
+            <p class="section-sub" style="margin:6px 0 0">빛이 닿는 곳마다, 우리의 분위기로 채워지길</p>
           </div>
         </div>
 
@@ -857,6 +960,206 @@
     </div>
   </section>
 
+<!-- REVIEWS -->
+  <section id="reviews" aria-label="이용 후기">
+    <div class="container">
+      <div class="reviews-wrap">
+        <div class="reviews-head">
+          <div>
+            <h3 class="section-title"><span class="title-ico"><i class="ri-star-smile-line"></i></span>이용 후기</h3>
+            <p class="section-sub" style="margin:6px 0 0">실제 방문 고객님의 생생한 리뷰</p>
+          </div>
+        </div>
+        <div class="reviews-body">
+          <div class="review-slider" id="reviewSlider" aria-label="이용 후기 슬라이더">
+            <div class="review-track">
+              <!-- Card 1 -->
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+				<div class="review-meta">
+                    <span class="review-name">정*현</span>
+                    <span class="review-date">2025-08-02</span>
+                  </div>
+                </div>
+                <div class="review-stars" aria-label="별점 5점 만점">
+                  <i class="ri-star-fill" aria-hidden="true"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <p class="review-text">조명이 진짜 예뻐요. 흑백/컬러 둘 다 느낌이 달라서 시간 가는 줄 모르고 찍었습니다. 스태프 호출벨도 있어서 안심됐어요.</p>
+                <div class="review-source"><i class="ri-instagram-line" aria-hidden="true"></i>인스타그램 리뷰</div>
+              </article>
+              <!-- Card 2 -->
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+					<div class="review-meta">
+                    <span class="review-name">김*지</span>
+                    <span class="review-date">2025-07-18</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">가족사진 찍었는데 인화까지 바로 받아서 좋았어요. 프라이빗 룸이라 아이랑 편하게 찍었습니다.</p>
+                <div class="review-source"><i class="fa-solid fa-blog" aria-hidden="true"></i>네이버 블로그</div>
+              </article>
+              <!-- Card 3 -->
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+				<div class="review-meta">
+                    <span class="review-name">박*우</span>
+                    <span class="review-date">2025-06-01</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></div>
+                <p class="review-text">소품이 다양해서 컷 수가 엄청 많아졌어요. 배경지 핑크도 분위기 굿!</p>
+                <div class="review-source"><i class="ri-star-line" aria-hidden="true"></i>방문 후기</div>
+              </article>
+              <!-- Card 4 -->
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+					<div class="review-meta">
+                    <span class="review-name">이*은</span>
+                    <span class="review-date">2025-05-12</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">가격 대비 최고. 자동보정 덕분인지 결과물이 차분하고 고급스러워요.</p>
+                <div class="review-source"><i class="ri-instagram-line" aria-hidden="true"></i>인스타그램 리뷰</div>
+              </article>
+              <!-- Card 5 -->
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+					<div class="review-meta">
+                    <span class="review-name">최*호</span>
+                    <span class="review-date">2025-04-03</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">주차 안내가 친절했고, 원본도 바로 받아서 편했습니다. 다음에 친구들이랑 또 올게요.</p>
+                <div class="review-source"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>방문 후기</div>
+              </article>
+
+              <!-- Added cards -->
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">윤*민</span>
+                    <span class="review-date">2025-09-09</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">커플 기념일로 갔는데 셀렉부터 인화까지 다 바로 되니 너무 간편했어요. 핑크 배경 강추!</p>
+                <div class="review-source"><i class="ri-instagram-line" aria-hidden="true"></i>인스타그램 리뷰</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">고*영</span>
+                    <span class="review-date">2025-08-22</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></div>
+                <p class="review-text">무인인데도 안내가 잘 되어 있어 처음 이용하는 사람도 어렵지 않았어요. 다음엔 친구들이랑 단체로!</p>
+                <div class="review-source"><i class="fa-solid fa-blog" aria-hidden="true"></i>네이버 블로그</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">서*원</span>
+                    <span class="review-date">2025-08-03</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">조명 톤이 차분해서 피부표현이 예쁘게 나와요. 자동보정도 과하지 않아 만족!</p>
+                <div class="review-source"><i class="ri-star-line" aria-hidden="true"></i>방문 후기</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">임*주</span>
+                    <span class="review-date">2025-07-29</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">아이랑 함께 찍었는데 프라이빗 룸이라 편했어요. 소품도 깔끔하고 다양합니다.</p>
+                <div class="review-source"><i class="ri-instagram-line" aria-hidden="true"></i>인스타그램 리뷰</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">문*성</span>
+                    <span class="review-date">2025-07-08</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">흑백 감성 제대로! 친구들이랑 우정사진 남기고 왔어요. 가격도 합리적.</p>
+                <div class="review-source"><i class="fa-solid fa-user" aria-hidden="true"></i>방문 후기</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">이*재</span>
+                    <span class="review-date">2025-06-21</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></div>
+                <p class="review-text">대기 없이 바로 입실해서 편했고, 원본 파일 메일로 바로 받아 좋았습니다.</p>
+                <div class="review-source"><i class="fa-solid fa-envelope" aria-hidden="true"></i>메일 후기</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">배*율</span>
+                    <span class="review-date">2025-06-05</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">장비는 손대지 않아도 되어서 셀프로도 결과물이 좋네요. 핑크 배경 진짜 예뻐요.</p>
+                <div class="review-source"><i class="ri-instagram-line" aria-hidden="true"></i>인스타그램 리뷰</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">권*하</span>
+                    <span class="review-date">2025-05-30</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">반려견과 함께 가족사진 남겼어요. 규정만 지키면 반려동물 동반 가능해서 좋아요.</p>
+                <div class="review-source"><i class="fa-solid fa-paw" aria-hidden="true"></i>방문 후기</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">정*림</span>
+                    <span class="review-date">2025-05-10</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">조명 세팅이 고정이라 어렵지 않았고, 안내 모달과 가이드가 친절했어요.</p>
+                <div class="review-source"><i class="fa-solid fa-star" aria-hidden="true"></i>방문 후기</div>
+              </article>
+              <article class="review-card" aria-roledescription="slide">
+                <div class="review-head">
+                  <div class="review-meta">
+                    <span class="review-name">장*우</span>
+                    <span class="review-date">2025-04-27</span>
+                  </div>
+                </div>
+                <div class="review-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                <p class="review-text">인화 4장 기본 포함이라 친구들과 공평하게 나눌 수 있어서 좋네요.</p>
+                <div class="review-source"><i class="fa-solid fa-camera" aria-hidden="true"></i>방문 후기</div>
+              </article>
+
+            </div>
+            <button class="review-nav review-prev" aria-label="이전 후기">‹</button>
+            <button class="review-nav review-next" aria-label="다음 후기">›</button>
+            <div class="review-dots" aria-label="슬라이드 인디케이터"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
   <!-- Location -->
   <section id="location" aria-label="위치">
     <div class="container location">
@@ -881,7 +1184,6 @@
         <dl>
           <dt>주소</dt><dd>안양시 동안구 시민대로 187 안양건설타워 613호 (바라봄 스튜디오)</dd>
           <dt>영업시간</dt><dd>매일 11:00 – 21:00 (연중무휴)</dd>
-          <dt>연락처</dt><dd>010-0000-0000 · hello@barabom.studio</dd>
           <dt>주차</dt><dd>최초 1시간 2,000원<br/>추가 요금 30분당 1,000원<br/>주말 동안구청 주차장 무료이용</dd>
         </dl>
         <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
@@ -893,6 +1195,9 @@
       </aside>
     </div>
   </section>
+
+
+  
 
   <footer>
     <div class="container footer">
@@ -1118,11 +1423,11 @@
         ':host{all:initial;font-family:"Pretendard Variable",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}' +
         '@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");' +
         
-        '.bbm-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(10,12,16,.65);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);animation:bbmFadeIn .35s cubic-bezier(.16,1,.3,1);padding:20px;}' +
+        '.bbm-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(10,12,16,.65);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);animation:bbmFadeIn .35s cubic-bezier(.16,1,.3,1);padding:20px;overflow:auto;}' +
         '@keyframes bbmFadeIn{from{opacity:0}to{opacity:1}}' +
         '@keyframes bbmSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}' +
         
-        '.bbm-card{position:relative;width:min(540px,calc(100% - 32px));max-width:calc(100vw - 32px);background:linear-gradient(to bottom,#ffffff,#fefdfb);border-radius:20px;padding:36px 32px 32px;box-shadow:0 24px 64px rgba(0,0,0,.14),0 0 0 1px rgba(201,166,97,.08) inset,0 1px 0 rgba(255,255,255,.4) inset;animation:bbmSlideUp .4s cubic-bezier(.16,1,.3,1);overflow:hidden;}' +
+        '.bbm-card{position:relative;width:min(540px,calc(100% - 32px));max-width:calc(100vw - 32px);background:linear-gradient(to bottom,#ffffff,#fefdfb);border-radius:20px;padding:36px 32px 32px;box-shadow:0 24px 64px rgba(0,0,0,.14),0 0 0 1px rgba(201,166,97,.08) inset,0 1px 0 rgba(255,255,255,.4) inset;animation:bbmSlideUp .4s cubic-bezier(.16,1,.3,1);overflow:auto;max-height:calc(90vh - 40px);-webkit-overflow-scrolling:touch;}' +
         '.bbm-card::before{content:"";position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(135deg,rgba(201,166,97,.04),transparent);pointer-events:none;}' +
         
         '.bbm-kicker{display:inline-flex;align-items:center;gap:6px;font-size:.65rem;letter-spacing:.18em;font-weight:800;color:#7A6433;background:linear-gradient(135deg,rgba(201,166,97,.08),rgba(201,166,97,.12));border:1px solid rgba(201,166,97,.2);padding:6px 12px;border-radius:999px;text-transform:uppercase;box-shadow:0 2px 8px rgba(201,166,97,.08);}' +
@@ -1286,6 +1591,164 @@
 
 
 
+
+
+<script>
+/* BARABOM Reviews – responsive & looping single source of truth */
+(function(){
+  const root = document.getElementById('reviewSlider');
+  if(!root) return;
+
+  const track = root.querySelector('.review-track');
+  const cards = Array.from(track.querySelectorAll('.review-card'));
+  const prevBtn = root.querySelector('.review-prev');
+  const nextBtn = root.querySelector('.review-next');
+  const dotsWrap = root.querySelector('.review-dots');
+
+  // --- state
+  let gap = 0;                 // px (from CSS gap)
+  let unit = 0;                // card width + gap
+  let visible = 1;             // how many cards fit in viewport
+  let totalPages = 1;          // ceil(cards.length / visible)
+  let pageIndex = 0;           // 0-based page
+  let autoplayId = null;
+  const INTERVAL = 4500;
+
+  // --- helpers
+  const getGap = () => {
+    const s = getComputedStyle(track);
+    const g = parseFloat(s.gap || '0');
+    return Number.isFinite(g) ? g : 0;
+  };
+
+  function measure(){
+    if(!cards.length) return;
+    gap = getGap();
+    const w = cards[0].getBoundingClientRect().width;
+    unit = w + gap;
+
+    const viewportW = root.getBoundingClientRect().width;
+    visible = Math.max(1, Math.floor((viewportW + gap) / unit));
+
+    totalPages = Math.max(1, Math.ceil(cards.length / visible));
+    // 페이지가 줄어도 현재 페이지를 안전하게 유지
+    pageIndex = Math.min(pageIndex, totalPages - 1);
+  }
+
+  function pageStartIndex(pi){
+    // 마지막 페이지가 꽉 차지 않아도 빈칸 없이 맞추기
+    const start = pi * visible;
+    const maxStart = Math.max(0, cards.length - visible);
+    return Math.min(start, maxStart);
+  }
+
+  function applyTransform(){
+    const start = pageStartIndex(pageIndex);
+    const x = -start * unit;
+    track.style.transform = `translate3d(${x}px,0,0)`;
+    // dots
+    dotsWrap.querySelectorAll('.review-dot').forEach((d,i)=>{
+      d.classList.toggle('is-active', i === pageIndex);
+    });
+  }
+
+  function renderDots(){
+    dotsWrap.innerHTML = '';
+    for(let i=0;i<totalPages;i++){
+      const b = document.createElement('button');
+      b.className = 'review-dot' + (i===pageIndex?' is-active':'');
+      b.setAttribute('aria-label', `${i+1}번째 후기로 이동`);
+      b.addEventListener('click', ()=>go(i));
+      dotsWrap.appendChild(b);
+    }
+  }
+
+  function go(i){
+    pageIndex = (i % totalPages + totalPages) % totalPages; // 안전 모듈러
+    applyTransform();
+    restartAutoplay();
+  }
+
+  function next(){ go(pageIndex + 1); }
+  function prev(){ go(pageIndex - 1); }
+
+  // --- autoplay
+  function startAutoplay(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    stopAutoplay();
+    autoplayId = setInterval(next, INTERVAL);
+  }
+  function stopAutoplay(){ if(autoplayId) clearInterval(autoplayId); autoplayId = null; }
+  function restartAutoplay(){ stopAutoplay(); startAutoplay(); }
+
+  // --- drag / swipe
+  let down=false, startX=0, startY=0, lastX=0, deltaX=0, dragging=false;
+  const ACTIVATE=10, ANG=1.2;
+
+  const point = (e)=> e.touches ? {x:e.touches[0].clientX,y:e.touches[0].clientY} : {x:e.clientX,y:e.clientY};
+
+  function onDown(e){
+    down = true; dragging = false; deltaX = 0;
+    const p = point(e); startX = lastX = p.x; startY = p.y;
+    track.style.transition = 'none';
+    stopAutoplay();
+  }
+  function onMove(e){
+    if(!down) return;
+    const p = point(e);
+    const dx = p.x - lastX;
+    const adx = Math.abs(p.x - startX);
+    const ady = Math.abs(p.y - startY);
+
+    if(!dragging){
+      if(adx < ACTIVATE && ady < ACTIVATE) return;
+      if(adx >= ady * ANG) { dragging = true; e.preventDefault?.(); } 
+      else { down = false; track.style.transition = ''; startAutoplay(); return; }
+    }
+    deltaX += dx; lastX = p.x;
+    const base = -pageStartIndex(pageIndex) * unit;
+    track.style.transform = `translate3d(${base + deltaX}px,0,0)`;
+    e.preventDefault?.();
+  }
+  function onUp(){
+    if(!down) return;
+    down = false; track.style.transition = '';
+    const width = root.clientWidth;
+    const threshold = Math.max(40, width * 0.14);
+    if(deltaX > threshold) prev();
+    else if(deltaX < -threshold) next();
+    else applyTransform();
+    deltaX = 0; dragging = false; startAutoplay();
+  }
+
+  // --- bind
+  nextBtn?.addEventListener('click', next);
+  prevBtn?.addEventListener('click', prev);
+
+  track.addEventListener('pointerdown', onDown, {passive:true});
+  track.addEventListener('pointermove', onMove);
+  track.addEventListener('pointerup', onUp);
+  track.addEventListener('pointercancel', onUp);
+
+  window.addEventListener('resize', ()=>{ 
+    const prevVisible = visible;
+    measure();
+    // 가시 카드 수가 바뀌면 점, 위치 재계산
+    if (visible !== prevVisible) renderDots();
+    applyTransform();
+  }, {passive:true});
+
+  document.addEventListener('visibilitychange', ()=>{ 
+    if(document.hidden) stopAutoplay(); else startAutoplay(); 
+  });
+
+  // --- init
+  measure();
+  renderDots();
+  applyTransform();
+  startAutoplay();
+})();
+</script>
 
 </body>
 </html>
