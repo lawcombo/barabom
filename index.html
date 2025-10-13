@@ -55,6 +55,21 @@
       section{padding:48px 0} /* 모바일에서 스크롤 길이 축소 */
     }
 
+
+	/* 상단 고정 */
+	html, body {
+	  height: 100%;
+	  overflow: hidden;
+	}
+
+	body {
+	  position: fixed;
+	  width: 100%;
+	  height: 100%;
+	  overflow-y: auto;
+	  -webkit-overflow-scrolling: touch;
+	}
+
     /* Header */
     .hdr{position:sticky;top:0;z-index:60;border-bottom:1px solid var(--line-soft);
       background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7) 70%, rgba(255,255,255,0));
@@ -441,7 +456,7 @@
 }
 
 
-  </style>
+</style>
 
 <style>
 .review-nav[disabled]{opacity:.35;cursor:not-allowed;pointer-events:none;}
@@ -1477,6 +1492,7 @@
         '.bbm-note{font-size:.88rem;padding:10px 14px;}' +
         '.bbm-addr{font-size:.9rem;padding:10px 14px;}' +
         '.bbm-close{top:12px;right:12px;width:32px;height:32px;}' +
+		'.popup-title em{display:block;margin-top:2px;}' +
         '}' +
         '</style>';
 
@@ -1487,7 +1503,7 @@
         '<svg class="bbm-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
         '</button>' +
         '<span class="bbm-kicker">Private Self Studio</span>' +
-        '<h2 id="bbmTitle">범계역 핫플 무인 셀프스튜디오 <em>바라봄</em></h2>' +
+        '<h2 id="bbmTitle" class="popup-title">범계역 핫플 무인 셀프스튜디오 <em>바라봄</em></h2>' +
         '<p class="bbm-sub">100% 무인 예약제로 이용시간 동안 편안하고 자유로운 촬영이 가능합니다</p>' +
         '<ul class="bbm-list">' +
         '<li class="bbm-item"><span class="bbm-icon">◐</span><span><b>흑백+컬러</b> 모두 가능, 배경지(화이트·핑크) 자유 변경</span></li>' +
@@ -1748,6 +1764,15 @@
   startAutoplay();
 })();
 </script>
+
+
+<script>
+  // 주소창 숨김 강제 시도
+  window.addEventListener('load', () => {
+    setTimeout(() => window.scrollTo(0, 1), 100);
+  });
+</script>
+
 
 </body>
 </html>
