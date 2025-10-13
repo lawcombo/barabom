@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 메인 페이지 -->
+  <url>
+    <loc>https://lawcombo.github.io/barabom/</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 주요 섹션들 -->
+  <url>
+    <loc>https://lawcombo.github.io/barabom/#pricing</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://lawcombo.github.io/barabom/#amenities</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lawcombo.github.io/barabom/#guide</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lawcombo.github.io/barabom/#faq</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lawcombo.github.io/barabom/#location</loc>
+    <lastmod>2025-10-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
