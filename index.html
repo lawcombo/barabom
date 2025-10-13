@@ -518,7 +518,7 @@
     linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));
 }
 #location .map-preview img{
-  object-fit: cover;
+  object-fit: contain;
   filter: saturate(1.02) contrast(1.02);
   transition: transform .6s cubic-bezier(.2,.6,.2,1);
 }
@@ -606,6 +606,45 @@
 .review-nav[disabled]{opacity:.35;cursor:not-allowed;pointer-events:none;}
 </style>
 
+
+<style>
+
+/* =========================
+   전역: 스크롤해도 고정되는 연한 배경 이미지
+   ========================= */
+:root{
+  --bg-fixed-opacity: .12;   /* 배경 이미지 투명도(0~1) */
+  --bg-fixed-blur: 0px;      /* 필요하면 0~6px 정도로 흐림 */
+}
+
+/* body 뒤에 고정 레이어 하나를 깝니다 (iOS 포함 안정적) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* 모든 콘텐츠 뒤 */
+  background: url("assets/images/b01.png") center / cover no-repeat;
+  /* 너무 진하면 아래 두 줄로 톤 다운 */
+  filter: brightness(1) contrast(1) opacity(var(--bg-fixed-opacity)) blur(var(--bg-fixed-blur));
+  pointer-events: none; /* 클릭 방해 X */
+  will-change: transform; /* 스크롤 성능 힌트 */
+}
+
+/* (선택) 섹션 배경을 아주 살짝 비치게 하고 싶다면 주석 해제
+header, section, footer{
+  background: color-mix(in srgb, #ffffff 94%, transparent);
+  backdrop-filter: saturate(120%) blur(0.0px);
+}
+*/
+
+/* (선택) 모바일에서 데이터 절약/가독성 위해 더 연하게 */
+@media (max-width: 560px){
+  :root{ --bg-fixed-opacity: .08; }
+}
+</style>
+	
+
+	
 </head>
 <body>
   <!-- Header -->
@@ -1950,3 +1989,4 @@
 
 </body>
 </html>
+
