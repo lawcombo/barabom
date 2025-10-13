@@ -468,7 +468,8 @@
   <header class="hdr" aria-label="주요 메뉴">
     <div class="container nav">
       <a class="brand" aria-label="바라봄 홈으로" href="#home">
-        <img class="mark" src="assets/images/logo.jfif" alt="BARABOM" loading="lazy" decoding="async" />
+        <img class="mark" src="assets/images/logo.jfif" alt="BARABOM" loading="eager" fetchpriority="high" decoding="async" />
+
         <div>
           <h1>BARABOM</h1>
           <small>셀프사진관</small>
@@ -570,7 +571,7 @@
       <div class="hero-media" aria-hidden="true">
         <picture>
           <!-- WebP 우선 + JPG 폴백 -->
-          <img loading="lazy" decoding="async" src="assets/images/logo.jfif" alt="무드 있는 스튜디오 조명과 배경"/>
+          <img src="assets/images/logo.jfif" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 980px) 92vw, 42vw" alt="무드 있는 스튜디오 조명과 배경" />
         </picture>
         <span class="gloss"></span>
         <span class="tag">Moments of You</span>
@@ -1771,6 +1772,31 @@
   window.addEventListener('load', () => {
     setTimeout(() => window.scrollTo(0, 1), 100);
   });
+</script>
+
+
+
+<script>
+// Lazy 이미지 '조금 일찍' 부드럽게: 뷰포트 ±800px에서 미리 디코드
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+
+  // 히어로/로고는 이미 eager로 바꿨으니 제외하고, 나머지 lazy 이미지만
+  const lazies = Array.from(document.querySelectorAll('img[loading="lazy"]'));
+  // 네트워크 우선순위도 한 단계 낮춰서 초기 병목 방지
+  lazies.forEach(img => img.setAttribute('fetchpriority','low'));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(async (entry) => {
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      try { await img.decode(); } catch(e) {}
+      io.unobserve(img);
+    });
+  }, { rootMargin: '800px 0px' });
+
+  lazies.forEach(img => io.observe(img));
+})();
 </script>
 
 
