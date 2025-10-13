@@ -9,7 +9,7 @@
   <meta name="description" content="프라이빗한 공간에서 더 고급스럽게, 바라봄 셀프사진관. 합리적인 가격의 셀프/커플/우정/프로필 촬영." />
   <meta name="format-detection" content="telephone=no" />
   <meta property="og:url" content="https://barabom-studio.co.kr" />
-  <meta property="og:title" content="범계 바라봄 셀프사진관" />
+  <meta property="og:title" content="바라봄 셀프사진관" />
   <meta property="og:description" content="프라이빗·세련된 무드의 셀프 스튜디오" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
@@ -157,7 +157,7 @@
     @media (max-width: 560px){.tile{grid-column:span 6}}
 
     /* 가격표(화이트 유지) */
-    #pricing{background:var(--panel)}
+    #pricing{background:radial-gradient(900px 500px at 10% -10%, rgba(214,178,87,.08), transparent 60%), var(--bg)}
     /*
 	.pricing-wrap {
       border: 1px solid var(--line-soft);
@@ -211,7 +211,7 @@
     .opt-note{margin:10px 2px 0;color:var(--muted);font-size:.95rem}
 
     /* 안내사항 섹션 */
-    #guide{background:var(--panel)}
+    #guide{background:radial-gradient(900px 500px at 10% -10%, rgba(214,178,87,.08), transparent 60%), var(--bg)}
     .guide-wrap, .faq-wrap{
       border:1px solid var(--line);
       border-radius:18px;
@@ -266,6 +266,9 @@
     .faq{display:grid;gap:10px;padding:18px}
     details{background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));border:1px solid var(--line-soft);border-radius:12px;padding:14px}
     summary{font-weight:800;cursor:pointer}
+
+
+
 
     .location{display:grid;grid-template-columns: 1.2fr .8fr;gap:14px;align-items:start}
     #location .info {
@@ -367,7 +370,7 @@
 
   
 /* Reviews */
-#reviews{background:var(--panel)}
+#reviews{background:radial-gradient(900px 500px at 10% -10%, rgba(214,178,87,.08), transparent 60%), var(--bg)}
 .reviews-wrap{
   border:1px solid var(--line);
   border-radius:18px;
@@ -460,6 +463,140 @@
   .review-next{
     transform: translateY(-50%) scale(.9); /* 버튼 살짝 축소 */
   }
+}
+
+
+
+/* =========================
+   Location 섹션 리파인 (스타일만)
+   ========================= */
+#location{ background:var(--panel); }
+
+.container.location{
+  grid-template-columns: 1.15fr .85fr;
+  gap: 18px;
+}
+@media (max-width: 920px){
+  .container.location{ grid-template-columns: 1fr; }
+}
+
+/* Map 프레임을 더 단단하고 고급스럽게 */
+#location .mapbox{
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 48px rgba(0,0,0,.10);
+  overflow: hidden;
+  background: #fff;
+}
+#location .mapbox::before{
+  /* 골드 라인 라디얼 글로우 */
+  content:""; position:absolute; inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(1200px 300px at 20% 0%, rgba(214,178,87,.12), transparent 70%),
+    radial-gradient(1000px 200px at 100% 10%, rgba(214,178,87,.08), transparent 60%);
+  mix-blend-mode: normal;
+}
+#location .mapbox::after{
+  /* 가짜 지도 컨트롤(줌 버튼 느낌) */
+  content:""; position:absolute; top:12px; right:12px; width:72px; height:72px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7));
+  border:1px solid var(--line-soft);
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  /* 두 개의 버튼처럼 분할 */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  padding:6px;
+}
+#location .map-preview{
+  aspect-ratio: 16/10;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.01));
+}
+#location .map-preview img{
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.02);
+  transition: transform .6s cubic-bezier(.2,.6,.2,1);
+}
+#location .mapbox:hover .map-preview img{
+  transform: scale(1.01);
+}
+
+/* Info 카드 고급화 */
+#location .info{
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  padding: 22px 22px 20px;
+  box-shadow: 0 16px 44px rgba(0,0,0,.08);
+  background:
+    linear-gradient(180deg, #fff, #fff),
+    radial-gradient(600px 200px at 0% -10%, rgba(214,178,87,.10), transparent 60%);
+  background-clip: padding-box, border-box;
+  position: sticky;
+  top: calc(var(--hdrH) + 18px);
+}
+@media (max-width: 920px){
+  #location .info{ position: static; }
+}
+
+/* 제목 라인 & 아이콘 느낌 */
+#location .info h3{
+  margin: 0 0 14px !important;
+  font-weight: 800;
+  letter-spacing: .02em;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+#location .info h3::before{
+  content:"📍"; font-size: 1.05em;
+  filter: saturate(1.2);
+}
+
+/* DL 정리 – 두 컬럼 그리드 + 구분선 */
+#location .info dl{
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 10px 14px;
+  margin: 0;
+}
+#location .info dt{
+  font-weight: 800;
+  color:#1d232a;
+}
+#location .info dd{
+  margin: 0;
+  color:#343a46;
+}
+#location .info dt:not(:first-of-type),
+#location .info dd:not(:first-of-type){
+  border-top:1px dashed var(--line-soft);
+  padding-top: 10px;
+}
+
+/* 키워드 하이라이트 (주차 요금/시간 등 숫자 강조) */
+#location .info dd b,
+#location .info dd strong{
+  color: var(--gold-deep);
+  font-weight: 800;
+}
+
+/* CTA 버튼 여백 + 유리느낌 살짝 */
+#location .info > div{
+  margin-top: 18px !important;
+  gap: 10px !important;
+}
+#location .info a.btn{
+  backdrop-filter: blur(4px);
+}
+
+/* 좁은 화면에서 여백 조정 */
+@media (max-width: 560px){
+  #location .mapbox{ border-radius: 16px; }
+  #location .info{ border-radius: 16px; padding:18px; }
+  #location .info dl{ grid-template-columns: 78px 1fr; }
 }
 
 
@@ -973,7 +1110,7 @@
           <details>
             <summary>10. 주차는 가능한가요?</summary>
             <p>건물 내 주차장이 있으며 <span style="color:red; font-weight:bold;">유료</span>입니다. (30분당 1,000원)<br />
-            <span style="color:red; font-weight:bold;">주말 및 공휴일 무료 주차 안내</span> → 동안구청 공영주차장은 무료입니다.</p>
+            <span style="color:red; font-weight:bold;">주말 및 공휴일 무료 주차 안내</span> → 동안구청과 공영주차장은 무료입니다.</p>
           </details>
         </div>
 
@@ -1813,5 +1950,3 @@
 
 </body>
 </html>
-
-
