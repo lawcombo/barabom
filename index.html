@@ -600,9 +600,6 @@ html, body{ background: transparent !important; }
 /* 고정 배경이 비치도록 섹션 배경 투명화 */
 #pricing,
 #guide,
-#gallery,
-#amenities,
-#faq,
 #reviews{
   /* 기존과 같은 골드 라디얼은 유지하고, 불투명 바탕(var(--bg))만 제거 */
   background:
@@ -611,9 +608,11 @@ html, body{ background: transparent !important; }
 }
 
 /* (선택) 섹션 전체를 살짝 비치게 유지하고 싶다면 보강 */
+/*
 header, section, footer{
   background: color-mix(in srgb, #ffffff 94%, transparent) !important;
 }
+*/
 
 /* (선택) 아직도 어떤 섹션이 덮어쓰면, 해당 섹션만 강제 투명 처리 */
 #gallery, #amenities, #location, #faq{
@@ -2011,6 +2010,7 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
 
