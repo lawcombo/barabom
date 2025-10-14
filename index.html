@@ -673,15 +673,15 @@ header, section, footer{
   :root{ --bg-fixed-opacity: .15; }
 }
 
-/* 데스크톱: 크롭 줄이고 전체가 보이게 */
+/* 데스크톱: 가로는 꽉(cover), 높이만 살짝 낮게 */
 @media (min-width: 1024px){
   body::before{
-    background-size: contain;   /* cover → contain */
-    background-position: center;/* 필요시 center top 등으로 조정 */
-    background-repeat: no-repeat;
-    background-color: #fff;     /* 양옆/위아래 레터박스 배경색 (원하면 투명/다른색) */
+    background-size: cover;          /* 가득 채우기 유지 */
+    background-position: center top;  /* 필요시 center 로 변경 */
+    height: clamp(520px, 78vh, 880px);/* 높이만 줄여서 '덜 높게' 보이게 */
   }
 }
+
 
 
 
@@ -2033,6 +2033,7 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
 
