@@ -593,9 +593,14 @@ html, body{ background: transparent !important; }
   #location .info dl{ grid-template-columns: 78px 1fr; }
 }
 
+</style>
+
+<style>
+.review-nav[disabled]{opacity:.35;cursor:not-allowed;pointer-events:none;}
+</style>
 
 
-
+<style>
 
 /* 고정 배경이 비치도록 섹션 배경 투명화 */
 #pricing,
@@ -619,17 +624,7 @@ header, section, footer{
   background: color-mix(in srgb, #ffffff 94%, transparent);
 }
 
-
-	  
-</style>
-
-<style>
-.review-nav[disabled]{opacity:.35;cursor:not-allowed;pointer-events:none;}
-</style>
-
-
-<style>
-
+	
 /* =========================
    전역: 스크롤해도 고정되는 연한 배경 이미지
    ========================= */
@@ -662,6 +657,30 @@ header, section, footer{
 @media (max-width: 560px){
   :root{ --bg-fixed-opacity: .15; }
 }
+
+
+/* === 고정배경 보이도록 '섹션 바탕' 투명화 (최후승자) === */
+
+/* 1) 섹션 기본 바탕 투명, 카드만 흰색 유지 */
+body > header, body > section, body > footer{
+  background: transparent !important;
+}
+
+/* 2) 배경을 덮는 섹션들: 불투명 바탕 제거 + 라디얼만 남기기 */
+body :is(#gallery, #amenities, #faq, #pricing, #guide, #reviews){
+  background:
+    radial-gradient(900px 500px at 10% -10%, rgba(214,178,87,.08), transparent 60%),
+    transparent !important;
+}
+
+/* 3) 혹시 상단에서 var(--panel) 재정의가 또 있다면, 여기서 반투명으로 확정 */
+:root{
+  --panel: color-mix(in srgb, #ffffff 94%, transparent);
+}
+
+/* 4) 본문/HTML 자체 배경은 투명으로 유지 (body::before 고정 레이어가 뒤에 깔림) */
+html, body{ background: transparent !important; }
+
 </style>
 	
 
@@ -2010,6 +2029,7 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
 
