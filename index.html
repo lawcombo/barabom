@@ -673,6 +673,15 @@ header, section, footer{
   :root{ --bg-fixed-opacity: .15; }
 }
 
+/* 데스크톱: 크롭 줄이고 전체가 보이게 */
+@media (min-width: 1024px){
+  body::before{
+    background-size: contain;   /* cover → contain */
+    background-position: center;/* 필요시 center top 등으로 조정 */
+    background-repeat: no-repeat;
+    background-color: #fff;     /* 양옆/위아래 레터박스 배경색 (원하면 투명/다른색) */
+  }
+}
 
 
 
@@ -2024,6 +2033,7 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
 
