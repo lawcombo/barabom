@@ -673,12 +673,12 @@ header, section, footer{
   :root{ --bg-fixed-opacity: .15; }
 }
 
-/* 데스크톱: 가로는 꽉(cover), 높이만 살짝 낮게 */
+/* 데스크톱: 가로는 꽉(cover), 높이는 90vh, Y위치 위로 당기기 */
 @media (min-width: 1024px){
   body::before{
-    background-size: cover;          	/* 가득 채우기 유지 */
-    background-position: center top;  	/* 필요시 center 로 변경 */
-    height: 90vh;						/* 높이만 줄여서 '덜 높게' 보이게 */
+    height: 90vh;                  /* 높이만 줄임 */
+    background-size: cover;        /* 가로 꽉 채우기 유지 */
+    background-position: center -80px; /* ← 핵심: 위로 80px 당김 */
   }
 }
 
@@ -2033,6 +2033,7 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
 
