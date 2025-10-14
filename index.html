@@ -629,22 +629,37 @@ header, section, footer{
    전역: 스크롤해도 고정되는 연한 배경 이미지
    ========================= */
 :root{
-  --bg-fixed-opacity: .15;   /* 배경 이미지 투명도(0~1) */
-  --bg-fixed-blur: 0px;      /* 필요하면 0~6px 정도로 흐림 */
+  --bg-fixed-opacity: .15;
 }
 
-/* body 뒤에 고정 레이어 하나를 깝니다 (iOS 포함 안정적) */
+/* 고정 배경 레이어 – 모바일에서도 확대 현상 최소화 */
 body::before{
   content:"";
   position: fixed;
-  inset: 0;
-  z-index: -1; /* 모든 콘텐츠 뒤 */
+  top: 0; left: 0;
+  width: 100%;
+  height: 100svh; /* 주소창 변동에도 안정 */
+  z-index: -1;
   background: url("assets/images/b01.png") center / cover no-repeat;
-  /* 너무 진하면 아래 두 줄로 톤 다운 */
-  filter: brightness(1) contrast(1) opacity(var(--bg-fixed-opacity)) blur(var(--bg-fixed-blur));
-  pointer-events: none; /* 클릭 방해 X */
-  will-change: transform; /* 스크롤 성능 힌트 */
+  opacity: var(--bg-fixed-opacity);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  pointer-events: none;
 }
+
+/* 폴백 (구형 브라우저) */
+@supports not (height: 100svh) {
+  body::before{ height: 100dvh; }
+}
+@supports not (height: 100dvh) {
+  body::before{ height: 100vh; }
+}
+
+@supports (-webkit-touch-callout: none) {
+  body{ -webkit-overflow-scrolling: touch; }
+  body::before{ will-change: auto; }
+}
+
 
 /* (선택) 섹션 배경을 아주 살짝 비치게 하고 싶다면 주석 해제
 header, section, footer{
@@ -2009,6 +2024,7 @@ header, section, footer{
 
 </body>
 </html>
+
 
 
 
