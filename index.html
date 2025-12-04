@@ -1514,19 +1514,234 @@
         backdrop-filter: blur(4px);
     }
 
-    /* 좁은 화면에서 여백 조정 */
-    @media (max-width: 560px) {
-        #location .mapbox {
-            border-radius: 16px;
+    /* ========== 새로운 오시는길 스타일 ========== */
+    .location-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        border: 1px solid var(--line-soft);
+    }
+
+    .location-map {
+        position: relative;
+        min-height: 320px;
+        overflow: hidden;
+    }
+
+    .location-slider {
+        position: absolute;
+        inset: 0;
+    }
+
+    .location-slides {
+        display: flex;
+        height: 100%;
+        transition: transform 0.4s ease;
+    }
+
+    .location-slide {
+        min-width: 100%;
+        height: 100%;
+    }
+
+    .location-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .location-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: #333;
+        transition: all 0.2s ease;
+        z-index: 10;
+    }
+
+    .location-nav:hover {
+        background: #fff;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .location-prev {
+        left: 12px;
+    }
+
+    .location-next {
+        right: 12px;
+    }
+
+    .location-dots {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+    }
+
+    .location-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .location-dot.active {
+        background: #fff;
+        transform: scale(1.2);
+    }
+
+    .location-info {
+        padding: 28px 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(135deg, #fafbfc 0%, #f5f6f8 100%);
+    }
+
+    .location-info h3 {
+        margin: 0 0 20px;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #1d232a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .location-info h3 i {
+        color: var(--gold);
+        font-size: 1.3rem;
+    }
+
+    .location-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .location-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .location-list li > i {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 8px;
+        color: var(--gold);
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .location-list li > div {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .location-list .label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .location-list .value {
+        font-size: 0.95rem;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .location-list .value strong {
+        color: var(--gold-deep);
+        font-weight: 800;
+    }
+
+    .location-list .value em {
+        font-style: normal;
+        color: var(--muted);
+        font-size: 0.85rem;
+    }
+
+    .location-btn {
+        margin-top: 24px;
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+
+    .location-btn i {
+        font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+        .location-card {
+            grid-template-columns: 1fr;
         }
 
-        #location .info {
-            border-radius: 16px;
-            padding: 18px;
+        .location-map {
+            min-height: 200px;
         }
 
-        #location .info dl {
-            grid-template-columns: 78px 1fr;
+        .location-info {
+            padding: 24px 20px;
+        }
+
+        .location-list {
+            gap: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .location-info {
+            padding: 20px 16px;
+        }
+
+        .location-info h3 {
+            font-size: 1.1rem;
+        }
+
+        .location-list li > i {
+            width: 28px;
+            height: 28px;
+            font-size: 0.9rem;
+        }
+
+        .location-list .value {
+            font-size: 0.9rem;
         }
     }
 </style>
@@ -2136,12 +2351,12 @@
                 자주 묻는 질문 외 궁금한 점은 
 			    <a href="https://talk.naver.com/ct/w404o3?frm=pblog&resizeTo=1920%2C1160nidref%3Dhttps%3A%2F%2Fblog.naver.com%2FPostList.naver%3FblogId%3Dbarabom-studio%26widgetTypeCall%3Dtrue%26parentCategoryNo%3D1%26topReferer%3Dhttps%253A%252F%252Fpcmap.place.naver.com%252Fplace%252F1982834426%252Fhome%253Fentry%253Dplt%2526from%253Dmap%2526fromPanelNum%253D1%2526additionalHeight%253D76%2526timestamp%253D202511072235%2526locale%253Dko%2526svcName%253Dmap_pcv5%26trackingCode%3Dnaver_place%26directAccess%3Dtrue" 
 			       target="_blank" 
-			       style="color:#03c75a; text-decoration:underline; font-weight:bold;">
-			       💬네이버 톡톡
+			       style="color:#03c75a; text-decoration:none; font-weight:bold;">
+			       💬<span style="text-decoration:underline;">네이버 톡톡</span>
 			    </a>
 			    이나 
-			    <a href="tel:050713595485" style="color:inherit; text-decoration:underline; font-weight:bold;">
-			        📞전화
+			    <a href="tel:050713595485" style="color:inherit; text-decoration:none; font-weight:bold;">
+			        📞<span style="text-decoration:underline;">전화</span>
 			    </a>
 			    로 문의주세요.
             </div>
@@ -2351,40 +2566,62 @@
 
 <!-- Location -->
 <section id="location" aria-label="위치">
-    <div class="container location">
-        <div class="mapbox">
-            <div class="map-preview" aria-label="지도 미리보기 슬라이드">
-                <div class="slide is-active">
-                    <picture>
-
-                        <img loading="lazy" decoding="async" src="assets/images/map01.png" alt="지도 미리보기 1">
-                    </picture>
+    <div class="container">
+        <div class="location-card">
+            <!-- 지도 영역 -->
+            <div class="location-map">
+                <div class="location-slider">
+                    <div class="location-slides">
+                        <div class="location-slide">
+                            <img loading="lazy" decoding="async" src="assets/images/map01.png" alt="지도 미리보기 1">
+                        </div>
+                        <div class="location-slide">
+                            <img loading="lazy" decoding="async" src="assets/images/map02.png" alt="지도 미리보기 2">
+                        </div>
+                    </div>
+                    <button class="location-nav location-prev" aria-label="이전 이미지"><i class="ri-arrow-left-s-line"></i></button>
+                    <button class="location-nav location-next" aria-label="다음 이미지"><i class="ri-arrow-right-s-line"></i></button>
+                    <div class="location-dots"></div>
                 </div>
-                <div class="slide">
-                    <picture>
-
-                        <img loading="lazy" decoding="async" src="assets/images/map02.png" alt="지도 미리보기 2">
-                    </picture>
-                </div>
+            </div>
+            <!-- 정보 영역 -->
+            <div class="location-info">
+                <h3><i class="ri-map-pin-2-fill"></i> 오시는 길</h3>
+                <ul class="location-list">
+                    <li>
+                        <i class="ri-building-line"></i>
+                        <div>
+                            <span class="label">주소</span>
+                            <span class="value">안양시 동안구 시민대로 187<br>안양건설타워 613호</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ri-time-line"></i>
+                        <div>
+                            <span class="label">영업시간</span>
+                            <span class="value">매일 09:00 – 24:00 <em>(연중무휴)</em></span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ri-parking-box-line"></i>
+                        <div>
+                            <span class="label">주차</span>
+                            <span class="value"><strong>2시간 무료</strong> 주차 가능</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="ri-subway-line"></i>
+                        <div>
+                            <span class="label">지하철</span>
+                            <span class="value">범계역 도보 <strong>2분</strong></span>
+                        </div>
+                    </li>
+                </ul>
+                <a class="btn btn-primary location-btn" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener nofollow" id="btnMap">
+                    <i class="ri-map-2-line"></i> 네이버 지도로 보기
+                </a>
             </div>
         </div>
-        <aside class="info">
-            <h3 style="margin:0 0 10px">오시는 길</h3>
-            <dl>
-                <dt>주소</dt>
-                <dd>안양시 동안구 시민대로 187 안양건설타워 613호 (바라봄 스튜디오)</dd>
-                <dt>영업시간</dt>
-                <dd>매일 09:00 – 24:00 (연중무휴)</dd>
-                <dt>주차</dt>
-                <dd>주차 2시간 무료입니다.</dd>
-            </dl>
-            <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-                <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1982834426?placePath=%2Fhome" target="_blank" rel="noopener nofollow" id="btnMap" style="width:100%;">지도 보기 · 예약</a>
-                <!-- 
-		  <a class="btn btn-ghost" href="#home" id="btnTop">맨 위로</a>
-			-->
-            </div>
-        </aside>
     </div>
 </section>
 
@@ -2590,15 +2827,48 @@
 
   <!-- Map preview (2장 페이드 슬라이드) -->
   <script>
+    // Location 슬라이더
     (function(){
-      const slides = Array.from(document.querySelectorAll('.map-preview .slide'));
-      if(slides.length < 2) return;
-      let i = 0;
-      setInterval(()=>{
-        slides[i].classList.remove('is-active');
-        i = (i + 1) % slides.length;
-        slides[i].classList.add('is-active');
-      }, 3000);
+      const slider = document.querySelector('.location-slider');
+      if(!slider) return;
+      
+      const slides = slider.querySelector('.location-slides');
+      const slideItems = slider.querySelectorAll('.location-slide');
+      const prevBtn = slider.querySelector('.location-prev');
+      const nextBtn = slider.querySelector('.location-next');
+      const dotsContainer = slider.querySelector('.location-dots');
+      
+      if(slideItems.length < 2) return;
+      
+      let currentIndex = 0;
+      
+      // 도트 생성
+      slideItems.forEach((_, idx) => {
+        const dot = document.createElement('span');
+        dot.className = 'location-dot' + (idx === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(idx));
+        dotsContainer.appendChild(dot);
+      });
+      
+      const dots = dotsContainer.querySelectorAll('.location-dot');
+      
+      function goToSlide(index) {
+        currentIndex = index;
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slideItems.length) % slideItems.length;
+        goToSlide(currentIndex);
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slideItems.length;
+        goToSlide(currentIndex);
+      });
     })();
   </script>
 
