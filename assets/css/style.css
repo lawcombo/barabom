@@ -368,6 +368,29 @@
         color: var(--muted)
     }
 
+    /* 모바일에서 섹션 타이틀 컴팩트하게 */
+    @media (max-width: 560px) {
+        .section-title {
+            font-size: 1.3rem;
+            gap: 8px;
+        }
+
+        .section-title .title-ico {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+        }
+
+        .section-title .title-ico i {
+            font-size: 14px;
+        }
+
+        .section-sub {
+            font-size: 0.9rem;
+            margin: 0 0 18px;
+        }
+    }
+
     /* 골드 라인 애니메이션 */
     @keyframes sweepGlow {
         0% {
@@ -631,6 +654,13 @@
         align-items: end
     }
 
+    /* 모바일에서 guide-head 컴팩트하게 */
+    @media (max-width: 560px) {
+        .guide-head {
+            padding: 16px 14px;
+        }
+    }
+
     .guide-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -641,6 +671,13 @@
     @media (max-width:900px) {
         .guide-grid {
             grid-template-columns: 1fr
+        }
+    }
+
+    @media (max-width:560px) {
+        .guide-grid {
+            padding: 14px;
+            gap: 8px;
         }
     }
 
@@ -660,12 +697,55 @@
         margin: 0
     }
 
+    /* 모바일에서 step 카드 컴팩트하게 */
+    @media (max-width: 560px) {
+        .step {
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .step h4 {
+            font-size: 0.95rem;
+            margin: 0 0 5px;
+        }
+
+        .fine {
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+    }
+
     .guide-list {
         padding: 0 0 18px
     }
 
     .guide-list ul {
-        margin: 8px 0 0 1em
+        margin: 8px 0 0 1em;
+        padding-left: 1.2em;
+    }
+
+    .guide-list li {
+        margin-bottom: 6px;
+        line-height: 1.6;
+    }
+
+    /* 모바일에서 guide-list 컴팩트하게 */
+    @media (max-width: 560px) {
+        .guide-list {
+            padding: 0 14px 14px;
+        }
+
+        .guide-list ul {
+            margin: 6px 0 0 0.5em;
+            padding-left: 1em;
+        }
+
+        .guide-list li {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            margin-bottom: 5px;
+            word-break: keep-all;
+        }
     }
 
     .guide-foot {
@@ -675,6 +755,15 @@
         display: flex;
         gap: 10px;
         flex-wrap: wrap
+    }
+
+    /* 모바일에서 guide-foot 컴팩트하게 */
+    @media (max-width: 560px) {
+        .guide-foot {
+            padding: 12px 14px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
     }
 
     /* 편의 시설 */
@@ -768,6 +857,15 @@
         flex-wrap: wrap
     }
 
+    /* 모바일에서 amen-foot 텍스트 컴팩트하게 */
+    @media (max-width: 560px) {
+        .amen-foot {
+            padding: 12px 14px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+    }
+
     /* FAQ / Location / Footer */
     .faq {
         display: grid;
@@ -785,6 +883,39 @@
     summary {
         font-weight: 800;
         cursor: pointer
+    }
+
+    details p {
+        margin: 10px 0 0;
+        line-height: 1.6;
+    }
+
+    /* 모바일에서 FAQ 텍스트 컴팩트하게 */
+    @media (max-width: 560px) {
+        .faq {
+            gap: 8px;
+            padding: 14px;
+        }
+
+        details {
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        summary {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        details p {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            margin: 8px 0 0;
+        }
+
+        details p span {
+            font-size: 0.85rem;
+        }
     }
 
 
@@ -1736,7 +1867,7 @@
         height: 100svh;
         /* 주소창 변동에도 안정 */
         z-index: -1;
-        background: url("assets/images/b01.png") center / cover no-repeat;
+        background: url("../images/b01.png") center / cover no-repeat;
         opacity: var(--bg-fixed-opacity);
         backface-visibility: hidden;
         transform: translateZ(0);
