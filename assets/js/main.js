@@ -306,7 +306,7 @@
         '<p class="bbm-sub">100% 무인 예약제로 이용시간 동안 편안하고 자유로운 촬영이 가능합니다</p>' +
         '<ul class="bbm-list">' +
         '<li class="bbm-item"><span class="bbm-icon">◐</span><span><b>흑백+컬러</b> 모두 가능, 배경지(화이트·핑크) 자유 변경</span></li>' +
-        '<li class="bbm-item"><span class="bbm-icon">₩</span><span><b>2~4인 3만원</b> 합리적인 가격</span></li>' +
+        '<li class="bbm-item"><span class="bbm-icon">₩</span><span><b>2~4인 3만원대</b> 합리적인 가격</span></li>' +
         '<li class="bbm-item"><span class="bbm-icon">⏱</span><span>평일 <b>90분</b> / 주말·공휴일 <b>60분</b> (촬영~셀렉·인화)</span></li>' +
         '<li class="bbm-item"><span class="bbm-icon">∞</span><span><b>전체 원본 무료 제공</b> · 컷수 무제한</span></li>' +
         '<li class="bbm-item"><span class="bbm-icon">✓</span><span>인화본+원본 <b>즉시 수령</b> · 포토리뷰 시 <b>추가 인화 2장 무료</b></span></li>' +
